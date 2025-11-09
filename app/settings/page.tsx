@@ -103,7 +103,7 @@ export default function SettingsPage() {
             <span className="text-base">⚙️</span>
             <span>システム設定</span>
           </div>
-          <div className="bg-[#c0c0c0] px-3 py-0.5 text-xs border border-white border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080]">
+          <div className="bg-[#c0c0c0] px-3 py-0.5 text-xs text-black border border-white border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080]">
             設定画面
           </div>
         </div>
@@ -158,7 +158,7 @@ export default function SettingsPage() {
                     onChange={(e) => setNewFieldName(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleAddField()}
                     placeholder="項目名を入力"
-                    className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm placeholder:text-black"
+                    className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm placeholder:text-gray-500"
                   />
                   <button
                     onClick={handleAddField}

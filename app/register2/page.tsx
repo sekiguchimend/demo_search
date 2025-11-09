@@ -60,7 +60,7 @@ export default function Register2() {
             <span className="text-base">📋</span>
             <span>仕様</span>
           </div>
-          <div className="bg-[#c0c0c0] px-3 py-0.5 text-xs border border-white border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080]">
+          <div className="bg-[#c0c0c0] px-3 py-0.5 text-xs text-black border border-white border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080]">
             登録画面②
           </div>
         </div>

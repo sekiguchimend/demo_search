@@ -78,7 +78,7 @@ export default function SearchPage() {
             <span className="text-base">🔍</span>
             <span>検索</span>
           </div>
-          <div className="bg-[#c0c0c0] px-3 py-0.5 text-xs border border-white border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080]">
+          <div className="bg-[#c0c0c0] px-3 py-0.5 text-xs text-black border border-white border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080]">
             検索画面
           </div>
         </div>
@@ -88,7 +88,7 @@ export default function SearchPage() {
           {/* 検索条件 */}
           <div className="border-2 border-[#808080] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] p-3 bg-[#c0c0c0]">
             <div className="flex items-center justify-between mb-3">
-              <div className="text-sm font-bold">検索条件</div>
+              <div className="text-sm font-bold text-black">検索条件</div>
               <Link href="/settings">
                 <button className="text-xs text-blue-700 hover:underline">
                   検索項目を編集
@@ -101,12 +101,12 @@ export default function SearchPage() {
                 .filter(field => field.enabled)
                 .map((field) => (
                   <div key={field.id} className="flex items-center gap-2">
-                    <label className="text-sm whitespace-nowrap">{field.name}:</label>
+                    <label className="text-sm text-black whitespace-nowrap">{field.name}:</label>
                     <input
                       type="text"
                       value={searchParams[field.name] || ''}
                       onChange={(e) => setSearchParams({ ...searchParams, [field.name]: e.target.value })}
-                      className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                      className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm text-black"
                     />
                   </div>
                 ))}
@@ -116,7 +116,7 @@ export default function SearchPage() {
             <div className="mt-4 flex justify-center">
               <button
                 onClick={handleSearch}
-                className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-8 py-2 bg-[#c0c0c0] text-sm font-bold active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]"
+                className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-8 py-2 bg-[#c0c0c0] text-sm text-black font-bold active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff] hover:bg-[#d0d0d0]"
               >
                 検索
               </button>
@@ -125,19 +125,19 @@ export default function SearchPage() {
 
           {/* 検索結果テーブル */}
           <div className="border-2 border-[#808080] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] p-3 bg-[#c0c0c0]">
-            <div className="text-sm font-bold mb-3">検索結果（{results.length}件）</div>
+            <div className="text-sm font-bold text-black mb-3">検索結果（{results.length}件）</div>
             <div className="overflow-auto max-h-96 bg-white border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff]">
               <table className="w-full text-xs">
                 <thead className="bg-[#c0c0c0] sticky top-0">
                   <tr>
-                    <th className="border border-[#808080] px-2 py-1 text-left">図番</th>
-                    <th className="border border-[#808080] px-2 py-1 text-left">機種</th>
-                    <th className="border border-[#808080] px-2 py-1 text-left">大きさ</th>
-                    <th className="border border-[#808080] px-2 py-1 text-left">見積番号</th>
-                    <th className="border border-[#808080] px-2 py-1 text-left">製図者</th>
-                    <th className="border border-[#808080] px-2 py-1 text-left">作成年月日</th>
-                    <th className="border border-[#808080] px-2 py-1 text-left">仕様変更</th>
-                    <th className="border border-[#808080] px-2 py-1 text-left">営業所</th>
+                    <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">図番</th>
+                    <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">機種</th>
+                    <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">大きさ</th>
+                    <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">見積番号</th>
+                    <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">製図者</th>
+                    <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">作成年月日</th>
+                    <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">仕様変更</th>
+                    <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">営業所</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -145,7 +145,7 @@ export default function SearchPage() {
                     <tr
                       key={index}
                       className={`cursor-pointer ${
-                        selectedRow === index ? 'bg-[#0a246a] text-white' : 'hover:bg-gray-100'
+                        selectedRow === index ? 'bg-[#0a246a] text-white' : 'hover:bg-gray-100 text-black'
                       }`}
                       onClick={() => setSelectedRow(index)}
                     >
