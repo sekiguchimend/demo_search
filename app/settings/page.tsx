@@ -112,7 +112,7 @@ export default function SettingsPage() {
         <div className="p-6 space-y-6">
           {/* 検索項目設定セクション */}
           <div className="border-2 border-[#808080] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] p-4 bg-[#c0c0c0]">
-            <h2 className="text-sm font-bold mb-4 pb-2 border-b-2 border-[#808080]">検索項目設定</h2>
+            <h2 className="text-black text-sm font-bold mb-4 pb-2 border-b-2 border-[#808080]">検索項目設定</h2>
             <div className="space-y-3">
               <p className="text-xs text-gray-700">
                 ※検索画面に表示する項目を管理できます
@@ -150,7 +150,7 @@ export default function SettingsPage() {
 
               {/* 新規項目追加 */}
               <div className="mt-4 pt-4 border-t-2 border-[#808080]">
-                <p className="text-xs font-bold mb-2">新しい検索項目を追加：</p>
+                <p className="text-black text-xs font-bold mb-2">新しい検索項目を追加：</p>
                 <div className="flex gap-2">
                   <input
                     type="text"
@@ -158,11 +158,11 @@ export default function SettingsPage() {
                     onChange={(e) => setNewFieldName(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleAddField()}
                     placeholder="項目名を入力"
-                    className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                    className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
                   />
                   <button
                     onClick={handleAddField}
-                    className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-4 py-1 bg-[#c0c0c0] text-sm active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff] flex items-center gap-1"
+                    className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-4 py-1 bg-[#c0c0c0] text-black text-sm active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff] flex items-center gap-1"
                   >
                     <Plus className="w-4 h-4" />
                     追加
@@ -174,7 +174,7 @@ export default function SettingsPage() {
 
           {/* 権限設定セクション */}
           <div className="border-2 border-[#808080] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] p-4 bg-[#c0c0c0]">
-            <h2 className="text-sm font-bold mb-4 pb-2 border-b-2 border-[#808080]">権限設定</h2>
+            <h2 className="text-black text-sm font-bold mb-4 pb-2 border-b-2 border-[#808080]">権限設定</h2>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
                 <label className="flex items-center gap-2 text-sm cursor-pointer">
@@ -217,7 +217,7 @@ export default function SettingsPage() {
 
           {/* 作図者ランク設定セクション */}
           <div className="border-2 border-[#808080] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] p-4 bg-[#c0c0c0]">
-            <h2 className="text-sm font-bold mb-4 pb-2 border-b-2 border-[#808080]">作図者ランク表示設定</h2>
+            <h2 className="text-black text-sm font-bold mb-4 pb-2 border-b-2 border-[#808080]">作図者ランク表示設定</h2>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
                 <label className="flex items-center gap-2 text-sm cursor-pointer">
@@ -261,7 +261,7 @@ export default function SettingsPage() {
 
           {/* 流用不可表示設定セクション */}
           <div className="border-2 border-[#808080] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] p-4 bg-[#c0c0c0]">
-            <h2 className="text-sm font-bold mb-4 pb-2 border-b-2 border-[#808080]">流用不可表示設定</h2>
+            <h2 className="text-black text-sm font-bold mb-4 pb-2 border-b-2 border-[#808080]">流用不可表示設定</h2>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
                 <label className="flex items-center gap-2 text-sm cursor-pointer">
@@ -280,7 +280,7 @@ export default function SettingsPage() {
 
               {settings.enableNoReuseWarning && (
                 <div className="pl-6 mt-4 space-y-2">
-                  <p className="text-xs font-bold mb-2">対象カテゴリー：</p>
+                  <p className="text-black text-xs font-bold mb-2">対象カテゴリー：</p>
                   <div className="space-y-2">
                     <label className="flex items-center gap-2 text-sm cursor-pointer">
                       <input
@@ -326,7 +326,7 @@ export default function SettingsPage() {
 
           {/* 表示範囲設定セクション */}
           <div className="border-2 border-[#808080] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] p-4 bg-[#c0c0c0]">
-            <h2 className="text-sm font-bold mb-4 pb-2 border-b-2 border-[#808080]">表示範囲設定</h2>
+            <h2 className="text-black text-sm font-bold mb-4 pb-2 border-b-2 border-[#808080]">表示範囲設定</h2>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
                 <label className="flex items-center gap-2 text-sm cursor-pointer">
@@ -372,13 +372,13 @@ export default function SettingsPage() {
           <div className="flex justify-end gap-4 pt-4">
             <button
               onClick={handleSave}
-              className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-8 py-2 bg-[#c0c0c0] text-sm font-bold active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]"
+              className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-8 py-2 bg-[#c0c0c0] text-black text-sm font-bold active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]"
             >
               保存
             </button>
             <button
               onClick={handleCancel}
-              className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-6 py-2 bg-[#c0c0c0] text-sm active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]"
+              className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-6 py-2 bg-[#c0c0c0] text-black text-sm active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]"
             >
               キャンセル
             </button>

@@ -160,7 +160,7 @@ export default function SearchPage() {
           {/* 検索条件 */}
           <div className="border-2 border-[#808080] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] p-3 bg-[#c0c0c0]">
             <div className="flex items-center justify-between mb-3">
-              <div className="text-sm font-bold">検索条件</div>
+              <div className="text-black text-sm font-bold">検索条件</div>
               <Link href="/settings">
                 <button className="text-xs text-blue-700 hover:underline">
                   検索項目を編集
@@ -173,12 +173,12 @@ export default function SearchPage() {
                 .filter(field => field.enabled)
                 .map((field) => (
                   <div key={field.id} className="flex items-center gap-2">
-                    <label className="text-sm whitespace-nowrap">{field.name}:</label>
+                    <label className="text-black text-sm whitespace-nowrap">{field.name}:</label>
                     <input
                       type="text"
                       value={searchParams[field.name] || ''}
                       onChange={(e) => setSearchParams({ ...searchParams, [field.name]: e.target.value })}
-                      className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                      className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
                     />
                   </div>
                 ))}
@@ -197,7 +197,7 @@ export default function SearchPage() {
 
           {/* 検索結果テーブル */}
           <div className="border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] bg-white overflow-auto" style={{ height: '400px' }}>
-            <table className="w-full text-xs border-collapse">
+            <table className="w-full text-black text-xs border-collapse">
               <thead className="sticky top-0">
                 <tr className="bg-[#c0c0c0]">
                   <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap">図番</th>

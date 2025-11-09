@@ -72,20 +72,20 @@ export default function RegisterPage() {
           {/* 第1行: 図番、図面種類 */}
           <div className="grid grid-cols-2 gap-4">
             <div className="flex items-center gap-2">
-              <label className="text-sm whitespace-nowrap">図番:</label>
+              <label className="text-black text-sm whitespace-nowrap">図番:</label>
               <input
                 type="text"
                 value={formData.drawingNumber}
                 onChange={(e) => setFormData({ ...formData, drawingNumber: e.target.value })}
-                className="flex-1 border-2 border-inset border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                className="flex-1 border-2 border-inset border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
               />
             </div>
             <div className="flex items-center gap-2">
-              <label className="text-sm whitespace-nowrap">図面種類:</label>
+              <label className="text-black text-sm whitespace-nowrap">図面種類:</label>
               <select
                 value={formData.drawingType}
                 onChange={(e) => setFormData({ ...formData, drawingType: e.target.value })}
-                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
               >
                 <option>F:確認図面</option>
                 <option>A:承認図面</option>
@@ -97,21 +97,21 @@ export default function RegisterPage() {
           {/* 第2行: 通知No、部品No、廃図対象外 */}
           <div className="grid grid-cols-3 gap-4">
             <div className="flex items-center gap-2">
-              <label className="text-sm whitespace-nowrap">通知No:</label>
+              <label className="text-black text-sm whitespace-nowrap">通知No:</label>
               <input
                 type="text"
                 value={formData.notificationNo}
                 onChange={(e) => setFormData({ ...formData, notificationNo: e.target.value })}
-                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
               />
             </div>
             <div className="flex items-center gap-2">
-              <label className="text-sm whitespace-nowrap">部品No:</label>
+              <label className="text-black text-sm whitespace-nowrap">部品No:</label>
               <input
                 type="text"
                 value={formData.productNo}
                 onChange={(e) => setFormData({ ...formData, productNo: e.target.value })}
-                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
               />
             </div>
             <div className="flex items-center gap-2">
@@ -129,11 +129,11 @@ export default function RegisterPage() {
 
           {/* 第3行: 製品名称 */}
           <div className="flex items-center gap-2">
-            <label className="text-sm whitespace-nowrap">製品名称:</label>
+            <label className="text-black text-sm whitespace-nowrap">製品名称:</label>
             <select
               value={formData.productName}
               onChange={(e) => setFormData({ ...formData, productName: e.target.value })}
-              className="w-64 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+              className="w-64 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
             >
               <option>広スペースハウス</option>
               <option>コンパクトハウス</option>
@@ -143,31 +143,31 @@ export default function RegisterPage() {
           {/* 第4行: 部品名称、部品仕様、部品特性 */}
           <div className="grid grid-cols-3 gap-4">
             <div className="flex items-center gap-2">
-              <label className="text-sm whitespace-nowrap">部品名称:</label>
+              <label className="text-black text-sm whitespace-nowrap">部品名称:</label>
               <select
                 value={formData.partName}
                 onChange={(e) => setFormData({ ...formData, partName: e.target.value })}
-                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
               >
                 <option value=""></option>
               </select>
             </div>
             <div className="flex items-center gap-2">
-              <label className="text-sm whitespace-nowrap">部品仕様:</label>
+              <label className="text-black text-sm whitespace-nowrap">部品仕様:</label>
               <select
                 value={formData.partSpec}
                 onChange={(e) => setFormData({ ...formData, partSpec: e.target.value })}
-                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
               >
                 <option value=""></option>
               </select>
             </div>
             <div className="flex items-center gap-2">
-              <label className="text-sm whitespace-nowrap">部品特性:</label>
+              <label className="text-black text-sm whitespace-nowrap">部品特性:</label>
               <select
                 value={formData.partProperty}
                 onChange={(e) => setFormData({ ...formData, partProperty: e.target.value })}
-                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
               >
                 <option value=""></option>
               </select>
@@ -177,33 +177,33 @@ export default function RegisterPage() {
           {/* 第5行: 機種、大きさ、壁仕様 */}
           <div className="grid grid-cols-3 gap-4">
             <div className="flex items-center gap-2">
-              <label className="text-sm whitespace-nowrap">機種:</label>
+              <label className="text-black text-sm whitespace-nowrap">機種:</label>
               <select
                 value={formData.model}
                 onChange={(e) => setFormData({ ...formData, model: e.target.value })}
-                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
               >
                 <option>KKS</option>
                 <option>KKM</option>
               </select>
             </div>
             <div className="flex items-center gap-2">
-              <label className="text-sm whitespace-nowrap">大きさ:</label>
+              <label className="text-black text-sm whitespace-nowrap">大きさ:</label>
               <select
                 value={formData.size}
                 onChange={(e) => setFormData({ ...formData, size: e.target.value })}
-                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
               >
                 <option>8031</option>
                 <option>9031</option>
               </select>
             </div>
             <div className="flex items-center gap-2">
-              <label className="text-sm whitespace-nowrap">壁仕様:</label>
+              <label className="text-black text-sm whitespace-nowrap">壁仕様:</label>
               <select
                 value={formData.wallSpec}
                 onChange={(e) => setFormData({ ...formData, wallSpec: e.target.value })}
-                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
               >
                 <option>2019年10月改定</option>
                 <option>2020年1月改定</option>
@@ -214,38 +214,38 @@ export default function RegisterPage() {
           {/* 第6行: 尺度、作成年月日、仕上げ */}
           <div className="grid grid-cols-3 gap-4">
             <div className="flex items-center gap-2">
-              <label className="text-sm whitespace-nowrap">尺度:</label>
+              <label className="text-black text-sm whitespace-nowrap">尺度:</label>
               <div className="flex items-center gap-1">
                 <input
                   type="text"
                   value={formData.scale1}
                   onChange={(e) => setFormData({ ...formData, scale1: e.target.value })}
-                  className="w-12 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm text-center"
+                  className="w-12 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-black text-sm text-center"
                 />
-                <span className="text-sm">/</span>
+                <span className="text-black text-sm">/</span>
                 <input
                   type="text"
                   value={formData.scale2}
                   onChange={(e) => setFormData({ ...formData, scale2: e.target.value })}
-                  className="w-16 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm text-center"
+                  className="w-16 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-black text-sm text-center"
                 />
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <label className="text-sm whitespace-nowrap">作成年月日:</label>
+              <label className="text-black text-sm whitespace-nowrap">作成年月日:</label>
               <input
                 type="text"
                 value={formData.creationDate}
                 onChange={(e) => setFormData({ ...formData, creationDate: e.target.value })}
-                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
               />
             </div>
             <div className="flex items-center gap-2">
-              <label className="text-sm whitespace-nowrap">仕上げ:</label>
+              <label className="text-black text-sm whitespace-nowrap">仕上げ:</label>
               <select
                 value={formData.finish}
                 onChange={(e) => setFormData({ ...formData, finish: e.target.value })}
-                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
               >
                 <option value=""></option>
               </select>
@@ -255,32 +255,32 @@ export default function RegisterPage() {
           {/* 第7行: 製図者、検図者、承認者 */}
           <div className="grid grid-cols-3 gap-4">
             <div className="flex items-center gap-2">
-              <label className="text-sm whitespace-nowrap">製図者:</label>
+              <label className="text-black text-sm whitespace-nowrap">製図者:</label>
               <select
                 value={formData.drafter}
                 onChange={(e) => setFormData({ ...formData, drafter: e.target.value })}
-                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
               >
                 <option>桃寧語</option>
                 <option>山田太郎</option>
               </select>
             </div>
             <div className="flex items-center gap-2">
-              <label className="text-sm whitespace-nowrap">検図者:</label>
+              <label className="text-black text-sm whitespace-nowrap">検図者:</label>
               <select
                 value={formData.reviewer}
                 onChange={(e) => setFormData({ ...formData, reviewer: e.target.value })}
-                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
               >
                 <option value=""></option>
               </select>
             </div>
             <div className="flex items-center gap-2">
-              <label className="text-sm whitespace-nowrap">承認者:</label>
+              <label className="text-black text-sm whitespace-nowrap">承認者:</label>
               <select
                 value={formData.approver}
                 onChange={(e) => setFormData({ ...formData, approver: e.target.value })}
-                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
               >
                 <option value=""></option>
               </select>
@@ -291,63 +291,63 @@ export default function RegisterPage() {
           <div className="grid grid-cols-2 gap-4">
             {/* 左側: 材料/材質 */}
             <div className="border-2 border-[#808080] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] p-3 bg-[#c0c0c0]">
-              <h3 className="text-sm font-bold mb-3">材料/材質</h3>
+              <h3 className="text-black text-sm font-bold mb-3">材料/材質</h3>
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <label className="text-sm whitespace-nowrap">名称:</label>
+                  <label className="text-black text-sm whitespace-nowrap">名称:</label>
                   <select
                     value={formData.materialName}
                     onChange={(e) => setFormData({ ...formData, materialName: e.target.value })}
-                    className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                    className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
                   >
                     <option value=""></option>
                   </select>
                 </div>
                 <div className="flex items-center gap-2">
-                  <label className="text-sm whitespace-nowrap">サイズ:</label>
+                  <label className="text-black text-sm whitespace-nowrap">サイズ:</label>
                   <select
                     value={formData.materialSize}
                     onChange={(e) => setFormData({ ...formData, materialSize: e.target.value })}
-                    className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                    className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
                   >
                     <option value=""></option>
                   </select>
                 </div>
                 <div className="grid grid-cols-3 gap-2">
                   <div className="flex items-center gap-1">
-                    <label className="text-sm whitespace-nowrap">板厚1:</label>
+                    <label className="text-black text-sm whitespace-nowrap">板厚1:</label>
                     <input
                       type="text"
                       value={formData.thickness1}
                       onChange={(e) => setFormData({ ...formData, thickness1: e.target.value })}
-                      className="w-16 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                      className="w-16 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
                     />
                   </div>
                   <div className="flex items-center gap-1">
-                    <label className="text-sm whitespace-nowrap">板厚2:</label>
+                    <label className="text-black text-sm whitespace-nowrap">板厚2:</label>
                     <input
                       type="text"
                       value={formData.thickness2}
                       onChange={(e) => setFormData({ ...formData, thickness2: e.target.value })}
-                      className="w-16 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                      className="w-16 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
                     />
                   </div>
                   <div className="flex items-center gap-1">
-                    <label className="text-sm whitespace-nowrap">長さ:</label>
+                    <label className="text-black text-sm whitespace-nowrap">長さ:</label>
                     <input
                       type="text"
                       value={formData.length}
                       onChange={(e) => setFormData({ ...formData, length: e.target.value })}
-                      className="w-16 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                      className="w-16 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
                     />
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <label className="text-sm whitespace-nowrap">材質:</label>
+                  <label className="text-black text-sm whitespace-nowrap">材質:</label>
                   <select
                     value={formData.material}
                     onChange={(e) => setFormData({ ...formData, material: e.target.value })}
-                    className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                    className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
                   >
                     <option value=""></option>
                   </select>
@@ -358,38 +358,38 @@ export default function RegisterPage() {
             {/* 右側: 営業所、見積番号、受注番号、ホスト転送 */}
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <label className="text-sm whitespace-nowrap">営業所:</label>
+                <label className="text-black text-sm whitespace-nowrap">営業所:</label>
                 <select
                   value={formData.office}
                   onChange={(e) => setFormData({ ...formData, office: e.target.value })}
-                  className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                  className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
                 >
                   <option>相模原営業所</option>
                   <option>東京営業所</option>
                 </select>
               </div>
               <div className="flex items-center gap-2">
-                <label className="text-sm whitespace-nowrap">見積番号:</label>
+                <label className="text-black text-sm whitespace-nowrap">見積番号:</label>
                 <input
                   type="text"
                   value={formData.estimateNo}
                   onChange={(e) => setFormData({ ...formData, estimateNo: e.target.value })}
-                  className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                  className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
                 />
               </div>
               <div className="flex items-center gap-2">
-                <label className="text-sm whitespace-nowrap">受注番号:</label>
+                <label className="text-black text-sm whitespace-nowrap">受注番号:</label>
                 <input
                   type="text"
                   value={formData.orderNo}
                   onChange={(e) => setFormData({ ...formData, orderNo: e.target.value })}
-                  className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm"
+                  className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
                 />
               </div>
 
               {/* ホスト転送セクション */}
               <div className="border-2 border-[#808080] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] p-3 bg-[#c0c0c0]">
-                <h3 className="text-sm font-bold mb-2">ホスト転送</h3>
+                <h3 className="text-black text-sm font-bold mb-2">ホスト転送</h3>
                 <div className="flex items-center justify-between">
                   <label className="flex items-center gap-1 text-sm">
                     <input
@@ -400,7 +400,7 @@ export default function RegisterPage() {
                     />
                     <span>する</span>
                   </label>
-                  <div className="text-sm">
+                  <div className="text-black text-sm">
                     状態: <span className="font-bold">{formData.transferStatus}</span>
                   </div>
                   <button
@@ -415,7 +415,7 @@ export default function RegisterPage() {
           </div>
 
           {/* 注意書き */}
-          <div className="text-sm text-red-700">
+          <div className="text-red-700 text-sm">
             図番と図面種類は必ず入力してください。
           </div>
 
@@ -423,13 +423,13 @@ export default function RegisterPage() {
           <div className="flex justify-end gap-4">
             <button
               onClick={handleSubmit}
-              className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-8 py-2 bg-[#c0c0c0] text-sm font-bold active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]"
+              className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-8 py-2 bg-[#c0c0c0] text-black text-sm font-bold active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]"
             >
               OK
             </button>
             <button
               onClick={handleCancel}
-              className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-6 py-2 bg-[#c0c0c0] text-sm active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]"
+              className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-6 py-2 bg-[#c0c0c0] text-black text-sm active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]"
             >
               キャンセル
             </button>
