@@ -157,8 +157,8 @@ export default function SettingsPage() {
                     value={newFieldName}
                     onChange={(e) => setNewFieldName(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleAddField()}
-                    placeholder="項目名を入力" placeholder:text-black
-                    className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
+                    placeholder="項目名を入力"
+                    className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm placeholder:text-black"
                   />
                   <button
                     onClick={handleAddField}
