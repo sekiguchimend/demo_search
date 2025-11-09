@@ -4,15 +4,20 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Plus, X, GripVertical } from 'lucide-react';
 
-// デフォルトの検索項目
+// デフォルトの検索項目（todo.mdに基づく）
 const defaultSearchFields = [
   { id: '1', name: '図番', enabled: true },
   { id: '2', name: '図面種類', enabled: true },
-  { id: '3', name: '機種', enabled: true },
-  { id: '4', name: '製図者', enabled: true },
-  { id: '5', name: '製品名', enabled: true },
-  { id: '6', name: '大きさ', enabled: true },
-  { id: '7', name: '仕様', enabled: true },
+  { id: '3', name: '製品名', enabled: true },
+  { id: '4', name: '機種', enabled: true },
+  { id: '5', name: '大きさ', enabled: true },
+  { id: '6', name: '製品仕様', enabled: true },
+  { id: '7', name: '作成年月日', enabled: true },
+  { id: '8', name: '製図者', enabled: true },
+  { id: '9', name: '営業所', enabled: true },
+  { id: '10', name: '見積番号', enabled: true },
+  { id: '11', name: '受注番号', enabled: true },
+  { id: '12', name: '特別仕様', enabled: true },
 ];
 
 export default function SettingsPage() {

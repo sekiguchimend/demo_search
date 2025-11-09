@@ -22,7 +22,7 @@ export default function RegisterPage() {
     scale2: '100',
     creationDate: '2025.04.11',
     finish: '',
-    drafter: '桃寧語',
+    drafter: '田中花子',
     reviewer: '',
     approver: '',
     materialName: '',
@@ -261,7 +261,7 @@ export default function RegisterPage() {
                 onChange={(e) => setFormData({ ...formData, drafter: e.target.value })}
                 className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
               >
-                <option>桃寧語</option>
+                <option>田中花子</option>
                 <option>山田太郎</option>
               </select>
             </div>
