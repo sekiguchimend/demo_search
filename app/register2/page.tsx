@@ -93,7 +93,7 @@ export default function Register2() {
 
             <button
               onClick={handleSpecChange}
-              className="ml-auto border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-6 py-1 bg-[#c0c0c0] text-sm active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]"
+              className="ml-auto border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-6 py-1 bg-[#c0c0c0] text-black text-sm active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]"
             >
               仕様変更
             </button>

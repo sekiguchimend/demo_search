@@ -115,7 +115,7 @@ export default function RegisterPage() {
               />
             </div>
             <div className="flex items-center gap-2">
-              <label className="flex items-center gap-1 text-sm border-2 border-[#808080] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-3 py-2 bg-[#c0c0c0]">
+              <label className="flex items-center gap-1 text-black text-sm border-2 border-[#808080] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-3 py-2 bg-[#c0c0c0]">
                 <input
                   type="checkbox"
                   checked={formData.obsolete}
@@ -391,7 +391,7 @@ export default function RegisterPage() {
               <div className="border-2 border-[#808080] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] p-3 bg-[#c0c0c0]">
                 <h3 className="text-black text-sm font-bold mb-2">ホスト転送</h3>
                 <div className="flex items-center justify-between">
-                  <label className="flex items-center gap-1 text-sm">
+                  <label className="flex items-center gap-1 text-black text-sm">
                     <input
                       type="checkbox"
                       checked={formData.hostTransfer}
@@ -401,11 +401,11 @@ export default function RegisterPage() {
                     <span>する</span>
                   </label>
                   <div className="text-black text-sm">
-                    状態: <span className="font-bold">{formData.transferStatus}</span>
+                    状態: <span className="font-bold text-black">{formData.transferStatus}</span>
                   </div>
                   <button
                     onClick={handleSpecSubmit}
-                    className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-4 py-1 bg-[#c0c0c0] text-sm active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]"
+                    className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-4 py-1 bg-[#c0c0c0] text-black text-sm active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]"
                   >
                     仕様登録
                   </button>

@@ -200,19 +200,19 @@ export default function SearchPage() {
             <table className="w-full text-black text-xs border-collapse">
               <thead className="sticky top-0">
                 <tr className="bg-[#c0c0c0]">
-                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap">図番</th>
-                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap">機種</th>
-                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap">大きさ</th>
-                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap">見積番号</th>
-                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap">製図者</th>
-                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap">作成年月日</th>
-                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap">仕様変更</th>
-                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap">営業所</th>
-                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap">特別仕様2-3</th>
-                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap">特別仕様2-4</th>
-                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap">特別仕様2-7</th>
-                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap">特別仕様2-8</th>
-                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap">特別仕様3-0</th>
+                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap text-black">図番</th>
+                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap text-black">機種</th>
+                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap text-black">大きさ</th>
+                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap text-black">見積番号</th>
+                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap text-black">製図者</th>
+                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap text-black">作成年月日</th>
+                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap text-black">仕様変更</th>
+                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap text-black">営業所</th>
+                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap text-black">特別仕様2-3</th>
+                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap text-black">特別仕様2-4</th>
+                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap text-black">特別仕様2-7</th>
+                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap text-black">特別仕様2-8</th>
+                  <th className="border border-[#808080] px-2 py-1 font-normal whitespace-nowrap text-black">特別仕様3-0</th>
                 </tr>
               </thead>
               <tbody>
@@ -222,19 +222,19 @@ export default function SearchPage() {
                     className={`cursor-pointer ${selectedRow === index ? 'bg-[#000080] text-white' : 'hover:bg-[#e0e0e0]'}`}
                     onClick={() => setSelectedRow(index)}
                   >
-                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap">{row.図番}</td>
-                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap">{row.機種}</td>
-                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap">{row.大きさ}</td>
-                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap">{row.見積番号}</td>
-                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap">{row.製図者}</td>
-                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap">{row.作成年月日}</td>
-                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap">{row.仕様変更}</td>
-                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap">{row.営業所}</td>
-                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap">{row.特別仕様23}</td>
-                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap">{row.特別仕様24}</td>
-                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap">{row.特別仕様27}</td>
-                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap">{row.特別仕様28}</td>
-                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap">{row.特別仕様30}</td>
+                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap text-black">{row.図番}</td>
+                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap text-black">{row.機種}</td>
+                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap text-black">{row.大きさ}</td>
+                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap text-black">{row.見積番号}</td>
+                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap text-black">{row.製図者}</td>
+                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap text-black">{row.作成年月日}</td>
+                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap text-black">{row.仕様変更}</td>
+                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap text-black">{row.営業所}</td>
+                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap text-black">{row.特別仕様23}</td>
+                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap text-black">{row.特別仕様24}</td>
+                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap text-black">{row.特別仕様27}</td>
+                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap text-black">{row.特別仕様28}</td>
+                    <td className="border border-[#808080] px-2 py-1 whitespace-nowrap text-black">{row.特別仕様30}</td>
                   </tr>
                 ))}
               </tbody>
@@ -244,7 +244,7 @@ export default function SearchPage() {
           {/* フッター */}
           <div className="border-2 border-[#808080] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] bg-[#c0c0c0]">
             {/* 選択された図面情報 */}
-            <div className="border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] bg-white px-2 py-1 text-xs flex items-center gap-3 m-2">
+            <div className="border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] bg-white px-2 py-1 text-black text-xs flex items-center gap-3 m-2">
               {selectedRow !== null && results.length > 0 && results[selectedRow] && (
                 <>
                   <span>{results[selectedRow].図番}</span>
@@ -265,37 +265,37 @@ export default function SearchPage() {
             {/* ボタン群 */}
             <div className="p-2 flex items-center justify-between">
               <div className="flex gap-2">
-                <button className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-3 py-1 bg-[#c0c0c0] text-xs active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]">
+                <button className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-3 py-1 bg-[#c0c0c0] text-black text-xs active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]">
                   指定検索
                 </button>
-                <button className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-3 py-1 bg-[#c0c0c0] text-xs active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]">
+                <button className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-3 py-1 bg-[#c0c0c0] text-black text-xs active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]">
                   標準検索
                 </button>
-                <button className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-3 py-1 bg-[#c0c0c0] text-xs active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]">
+                <button className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-3 py-1 bg-[#c0c0c0] text-black text-xs active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]">
                   履歴登録
                 </button>
-                <button className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-3 py-1 bg-[#c0c0c0] text-xs active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]">
+                <button className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-3 py-1 bg-[#c0c0c0] text-black text-xs active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]">
                   図面削除
                 </button>
-                <button className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-3 py-1 bg-[#c0c0c0] text-xs active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]">
+                <button className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-3 py-1 bg-[#c0c0c0] text-black text-xs active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]">
                   図面出力
                 </button>
                 <button
                   onClick={handleExportCSV}
-                  className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-3 py-1 bg-[#c0c0c0] text-xs active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff] hover:bg-[#d0d0d0]"
+                  className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-3 py-1 bg-[#c0c0c0] text-black text-xs active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff] hover:bg-[#d0d0d0]"
                   disabled={results.length === 0}
                 >
                   CSV出力
                 </button>
-                <button className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-3 py-1 bg-[#c0c0c0] text-xs active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]">
+                <button className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-3 py-1 bg-[#c0c0c0] text-black text-xs active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]">
                   &/I連携
                 </button>
               </div>
               <div className="flex gap-2">
-                <button className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-4 py-1 bg-[#c0c0c0] text-xs active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]">
+                <button className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-4 py-1 bg-[#c0c0c0] text-black text-xs active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]">
                   起動
                 </button>
-                <button className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-4 py-1 bg-[#c0c0c0] text-xs active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]">
+                <button className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-4 py-1 bg-[#c0c0c0] text-black text-xs active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]">
                   やり直
                 </button>
               </div>

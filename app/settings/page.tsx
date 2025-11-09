@@ -133,7 +133,7 @@ export default function SettingsPage() {
                         onChange={() => handleToggleField(field.id)}
                         className="w-4 h-4"
                       />
-                      <span className={`text-sm ${!field.enabled ? 'text-gray-500 line-through' : ''}`}>
+                      <span className={`text-sm ${!field.enabled ? 'text-gray-500 line-through' : 'text-black'}`}>
                         {field.name}
                       </span>
                     </label>
@@ -157,7 +157,7 @@ export default function SettingsPage() {
                     value={newFieldName}
                     onChange={(e) => setNewFieldName(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleAddField()}
-                    placeholder="項目名を入力"
+                    placeholder="項目名を入力" placeholder:text-black
                     className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm"
                   />
                   <button
@@ -177,7 +177,7 @@ export default function SettingsPage() {
             <h2 className="text-black text-sm font-bold mb-4 pb-2 border-b-2 border-[#808080]">権限設定</h2>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
-                <label className="flex items-center gap-2 text-sm cursor-pointer">
+                <label className="flex items-center gap-2 text-black text-sm cursor-pointer">
                   <input
                     type="checkbox"
                     checked={settings.enableEditProtection}
@@ -188,7 +188,7 @@ export default function SettingsPage() {
                 </label>
               </div>
               <div className="flex items-start gap-3">
-                <label className="flex items-center gap-2 text-sm cursor-pointer">
+                <label className="flex items-center gap-2 text-black text-sm cursor-pointer">
                   <input
                     type="checkbox"
                     checked={settings.enableDeleteProtection}
@@ -199,7 +199,7 @@ export default function SettingsPage() {
                 </label>
               </div>
               <div className="flex items-start gap-3">
-                <label className="flex items-center gap-2 text-sm cursor-pointer">
+                <label className="flex items-center gap-2 text-black text-sm cursor-pointer">
                   <input
                     type="checkbox"
                     checked={settings.allowCopyOnly}
@@ -220,7 +220,7 @@ export default function SettingsPage() {
             <h2 className="text-black text-sm font-bold mb-4 pb-2 border-b-2 border-[#808080]">作図者ランク表示設定</h2>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
-                <label className="flex items-center gap-2 text-sm cursor-pointer">
+                <label className="flex items-center gap-2 text-black text-sm cursor-pointer">
                   <input
                     type="checkbox"
                     checked={settings.enableDrafterRank}
@@ -237,7 +237,7 @@ export default function SettingsPage() {
               {settings.enableDrafterRank && (
                 <div className="pl-6 mt-4 space-y-2">
                   {settings.rankLevels.map((rank, index) => (
-                    <div key={index} className="flex items-center gap-4 text-sm">
+                    <div key={index} className="flex items-center gap-4 text-black text-sm">
                       <label className="flex items-center gap-2 cursor-pointer">
                         <input
                           type="checkbox"
@@ -264,7 +264,7 @@ export default function SettingsPage() {
             <h2 className="text-black text-sm font-bold mb-4 pb-2 border-b-2 border-[#808080]">流用不可表示設定</h2>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
-                <label className="flex items-center gap-2 text-sm cursor-pointer">
+                <label className="flex items-center gap-2 text-black text-sm cursor-pointer">
                   <input
                     type="checkbox"
                     checked={settings.enableNoReuseWarning}
@@ -282,7 +282,7 @@ export default function SettingsPage() {
                 <div className="pl-6 mt-4 space-y-2">
                   <p className="text-black text-xs font-bold mb-2">対象カテゴリー：</p>
                   <div className="space-y-2">
-                    <label className="flex items-center gap-2 text-sm cursor-pointer">
+                    <label className="flex items-center gap-2 text-black text-sm cursor-pointer">
                       <input
                         type="checkbox"
                         checked={settings.noReuseCategories.specialOrder}
@@ -294,7 +294,7 @@ export default function SettingsPage() {
                       />
                       <span>個別対応（特注範囲外の設計）</span>
                     </label>
-                    <label className="flex items-center gap-2 text-sm cursor-pointer">
+                    <label className="flex items-center gap-2 text-black text-sm cursor-pointer">
                       <input
                         type="checkbox"
                         checked={settings.noReuseCategories.reducedPerformance}
@@ -306,7 +306,7 @@ export default function SettingsPage() {
                       />
                       <span>外力性能を落として提案した物件</span>
                     </label>
-                    <label className="flex items-center gap-2 text-sm cursor-pointer">
+                    <label className="flex items-center gap-2 text-black text-sm cursor-pointer">
                       <input
                         type="checkbox"
                         checked={settings.noReuseCategories.customDesign}
@@ -329,7 +329,7 @@ export default function SettingsPage() {
             <h2 className="text-black text-sm font-bold mb-4 pb-2 border-b-2 border-[#808080]">表示範囲設定</h2>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
-                <label className="flex items-center gap-2 text-sm cursor-pointer">
+                <label className="flex items-center gap-2 text-black text-sm cursor-pointer">
                   <input
                     type="checkbox"
                     checked={settings.enableViewRestriction}
@@ -342,7 +342,7 @@ export default function SettingsPage() {
 
               {settings.enableViewRestriction && (
                 <div className="pl-6 mt-4 space-y-3">
-                  <label className="flex items-center gap-2 text-sm cursor-pointer">
+                  <label className="flex items-center gap-2 text-black text-sm cursor-pointer">
                     <input
                       type="checkbox"
                       checked={settings.builderOnlyReusable}
@@ -351,7 +351,7 @@ export default function SettingsPage() {
                     />
                     <span>ビルダーには流用可能図面のみ表示</span>
                   </label>
-                  <label className="flex items-center gap-2 text-sm cursor-pointer">
+                  <label className="flex items-center gap-2 text-black text-sm cursor-pointer">
                     <input
                       type="checkbox"
                       checked={settings.internalFullAccess}
