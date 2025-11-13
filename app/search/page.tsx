@@ -34,11 +34,14 @@ const sampleData = Array.from({ length: 30 }, (_, i) => ({
   見積番号: i % 3 === 0 ? '' : `000${188018 + i}`,
   受注番号: i % 2 === 0 ? '' : `KK${20250000 + i}`,
   特別仕様: i % 4 === 0 ? '' : ['間口切詰', '間仕切', '前壁', 'その他'][i % 4],
+  pdfFile: ['/demo.pdf', '/demo2.pdf', '/demo3.pdf', '/demo4.pdf'][i % 4],
 }));
 
 export default function SearchPage() {
   const [searchFields, setSearchFields] = useState(defaultSearchFields);
   const [searchParams, setSearchParams] = useState<Record<string, string>>({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentPdfFile, setCurrentPdfFile] = useState('');
 
   // localStorageから検索項目を読み込み
   useEffect(() => {
@@ -119,6 +122,16 @@ export default function SearchPage() {
     document.body.removeChild(link);
   };
 
+  const handlePreview = (pdfFile: string) => {
+    setCurrentPdfFile(pdfFile);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setCurrentPdfFile('');
+  };
+
   return (
     <div className="min-h-screen bg-[#c0c0c0] p-4 font-sans">
       <div className="mx-auto max-w-7xl bg-[#c0c0c0] border-2 border-white border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080]">
@@ -195,29 +208,40 @@ export default function SearchPage() {
                     <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">見積番号</th>
                     <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">受注番号</th>
                     <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">特別仕様</th>
+                    <th className="border border-[#808080] px-2 py-1 text-center text-black font-normal">プレビュー</th>
                   </tr>
                 </thead>
                 <tbody>
                   {results.map((row, index) => (
                     <tr
                       key={index}
-                      className={`cursor-pointer ${
+                      className={`${
                         selectedRow === index ? 'bg-[#0a246a] text-white' : 'hover:bg-gray-100 text-black'
                       }`}
-                      onClick={() => setSelectedRow(index)}
                     >
-                      <td className="border border-[#808080] px-2 py-1">{row.図番}</td>
-                      <td className="border border-[#808080] px-2 py-1">{row.図面種類}</td>
-                      <td className="border border-[#808080] px-2 py-1">{row.製品名}</td>
-                      <td className="border border-[#808080] px-2 py-1">{row.機種}</td>
-                      <td className="border border-[#808080] px-2 py-1">{row.大きさ}</td>
-                      <td className="border border-[#808080] px-2 py-1">{row.製品仕様}</td>
-                      <td className="border border-[#808080] px-2 py-1">{row.作成年月日}</td>
-                      <td className="border border-[#808080] px-2 py-1">{row.製図者}</td>
-                      <td className="border border-[#808080] px-2 py-1">{row.営業所}</td>
-                      <td className="border border-[#808080] px-2 py-1">{row.見積番号}</td>
-                      <td className="border border-[#808080] px-2 py-1">{row.受注番号}</td>
-                      <td className="border border-[#808080] px-2 py-1">{row.特別仕様}</td>
+                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.図番}</td>
+                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.図面種類}</td>
+                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.製品名}</td>
+                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.機種}</td>
+                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.大きさ}</td>
+                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.製品仕様}</td>
+                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.作成年月日}</td>
+                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.製図者}</td>
+                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.営業所}</td>
+                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.見積番号}</td>
+                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.受注番号}</td>
+                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.特別仕様}</td>
+                      <td className="border border-[#808080] px-2 py-1 text-center">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handlePreview(row.pdfFile);
+                          }}
+                          className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-3 py-0.5 bg-[#c0c0c0] text-xs text-black active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff] hover:bg-[#d0d0d0]"
+                        >
+                          プレビュー
+                        </button>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -313,6 +337,54 @@ export default function SearchPage() {
           </div>
         </div>
       </div>
+
+      {/* PDFプレビューモーダル */}
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+          onClick={handleCloseModal}
+        >
+          <div
+            className="bg-[#c0c0c0] border-2 border-white border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] w-full max-w-6xl max-h-[90vh] flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* モーダルタイトルバー */}
+            <div className="bg-gradient-to-r from-[#0a246a] to-[#a6caf0] px-2 py-1 flex items-center justify-between">
+              <div className="flex items-center gap-2 text-white font-bold text-sm">
+                <span className="text-base">📄</span>
+                <span>PDFプレビュー</span>
+              </div>
+              <button
+                onClick={handleCloseModal}
+                className="text-white hover:bg-white/20 px-2 py-0.5 rounded text-lg font-bold"
+              >
+                ×
+              </button>
+            </div>
+
+            {/* PDFビューアー */}
+            <div className="flex-1 p-4 overflow-auto bg-[#c0c0c0]">
+              <div className="h-full border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff]">
+                <iframe
+                  src={currentPdfFile}
+                  className="w-full h-full min-h-[70vh]"
+                  title="PDF Preview"
+                />
+              </div>
+            </div>
+
+            {/* モーダルフッター */}
+            <div className="border-t-2 border-[#808080] p-3 flex justify-center">
+              <button
+                onClick={handleCloseModal}
+                className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-6 py-1.5 bg-[#c0c0c0] text-xs text-black active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff] hover:bg-[#d0d0d0]"
+              >
+                閉じる
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
