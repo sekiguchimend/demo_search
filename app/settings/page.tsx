@@ -97,10 +97,10 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#c0c0c0] p-4 font-sans">
-      <div className="mx-auto max-w-6xl bg-[#c0c0c0] border-2 border-white border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080]">
+    <div className="min-h-screen bg-[#e8e8e8] p-4 font-sans">
+      <div className="mx-auto max-w-6xl bg-white rounded-lg shadow-lg">
         {/* タイトルバー */}
-        <div className="bg-gradient-to-r from-[#0a246a] to-[#a6caf0] px-2 py-1 flex items-center justify-between">
+        <div className="bg-[#6487AF] px-4 py-3 flex items-center justify-between rounded-t-lg">
           <div className="flex items-center gap-2 text-white font-bold text-sm">
             <Link href="/" className="hover:bg-white/20 p-1 rounded transition-colors">
               <ArrowLeft className="w-4 h-4" />
@@ -108,7 +108,7 @@ export default function SettingsPage() {
             <span className="text-base">⚙️</span>
             <span>システム設定</span>
           </div>
-          <div className="bg-[#c0c0c0] px-3 py-0.5 text-xs text-black border border-white border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080]">
+          <div className="bg-white/90 px-3 py-1 text-xs text-[#6487AF] font-semibold rounded">
             設定画面
           </div>
         </div>
@@ -116,8 +116,8 @@ export default function SettingsPage() {
         {/* メインコンテンツ */}
         <div className="p-6 space-y-6">
           {/* 検索項目設定セクション */}
-          <div className="border-2 border-[#808080] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] p-4 bg-[#c0c0c0]">
-            <h2 className="text-black text-sm font-bold mb-4 pb-2 border-b-2 border-[#808080]">検索項目設定</h2>
+          <div className="border border-gray-200 rounded-md p-4 bg-gray-50">
+            <h2 className="text-gray-800 text-sm font-bold mb-4 pb-2 border-b border-gray-300">検索項目設定</h2>
             <div className="space-y-3">
               <p className="text-xs text-gray-700">
                 ※検索画面に表示する項目を管理できます
@@ -163,11 +163,11 @@ export default function SettingsPage() {
                     onChange={(e) => setNewFieldName(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleAddField()}
                     placeholder="項目名を入力"
-                    className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-black text-sm placeholder:text-gray-500"
+                    className="flex-1 border border-gray-300 rounded px-2 py-1 bg-white text-gray-900 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
                   />
                   <button
                     onClick={handleAddField}
-                    className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-4 py-1 bg-[#c0c0c0] text-black text-sm active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff] flex items-center gap-1"
+                    className="px-4 py-1 bg-[#6487AF] text-white text-sm rounded hover:bg-[#5476a0] active:bg-[#4465a0] transition-colors flex items-center gap-1"
                   >
                     <Plus className="w-4 h-4" />
                     追加
@@ -178,8 +178,8 @@ export default function SettingsPage() {
           </div>
 
           {/* 権限設定セクション */}
-          <div className="border-2 border-[#808080] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] p-4 bg-[#c0c0c0]">
-            <h2 className="text-black text-sm font-bold mb-4 pb-2 border-b-2 border-[#808080]">権限設定</h2>
+          <div className="border border-gray-200 rounded-md p-4 bg-gray-50">
+            <h2 className="text-gray-800 text-sm font-bold mb-4 pb-2 border-b border-gray-300">権限設定</h2>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
                 <label className="flex items-center gap-2 text-black text-sm cursor-pointer">
@@ -221,8 +221,8 @@ export default function SettingsPage() {
           </div>
 
           {/* 作図者ランク設定セクション */}
-          <div className="border-2 border-[#808080] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] p-4 bg-[#c0c0c0]">
-            <h2 className="text-black text-sm font-bold mb-4 pb-2 border-b-2 border-[#808080]">作図者ランク表示設定</h2>
+          <div className="border border-gray-200 rounded-md p-4 bg-gray-50">
+            <h2 className="text-gray-800 text-sm font-bold mb-4 pb-2 border-b border-gray-300">作図者ランク表示設定</h2>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
                 <label className="flex items-center gap-2 text-black text-sm cursor-pointer">
@@ -265,8 +265,8 @@ export default function SettingsPage() {
           </div>
 
           {/* 流用不可表示設定セクション */}
-          <div className="border-2 border-[#808080] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] p-4 bg-[#c0c0c0]">
-            <h2 className="text-black text-sm font-bold mb-4 pb-2 border-b-2 border-[#808080]">流用不可表示設定</h2>
+          <div className="border border-gray-200 rounded-md p-4 bg-gray-50">
+            <h2 className="text-gray-800 text-sm font-bold mb-4 pb-2 border-b border-gray-300">流用不可表示設定</h2>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
                 <label className="flex items-center gap-2 text-black text-sm cursor-pointer">
@@ -287,7 +287,7 @@ export default function SettingsPage() {
                 <div className="pl-6 mt-4 space-y-2">
                   <p className="text-black text-xs font-bold mb-2">対象カテゴリー：</p>
                   <div className="space-y-2">
-                    <label className="flex items-center gap-2 text-black text-sm cursor-pointer">
+                    <label className="flex items-center gap-2 text-gray-700 text-sm cursor-pointer">
                       <input
                         type="checkbox"
                         checked={settings.noReuseCategories.specialOrder}
@@ -299,7 +299,7 @@ export default function SettingsPage() {
                       />
                       <span>個別対応（特注範囲外の設計）</span>
                     </label>
-                    <label className="flex items-center gap-2 text-black text-sm cursor-pointer">
+                    <label className="flex items-center gap-2 text-gray-700 text-sm cursor-pointer">
                       <input
                         type="checkbox"
                         checked={settings.noReuseCategories.reducedPerformance}
@@ -311,7 +311,7 @@ export default function SettingsPage() {
                       />
                       <span>外力性能を落として提案した物件</span>
                     </label>
-                    <label className="flex items-center gap-2 text-black text-sm cursor-pointer">
+                    <label className="flex items-center gap-2 text-gray-700 text-sm cursor-pointer">
                       <input
                         type="checkbox"
                         checked={settings.noReuseCategories.customDesign}
@@ -330,8 +330,8 @@ export default function SettingsPage() {
           </div>
 
           {/* 表示範囲設定セクション */}
-          <div className="border-2 border-[#808080] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] p-4 bg-[#c0c0c0]">
-            <h2 className="text-black text-sm font-bold mb-4 pb-2 border-b-2 border-[#808080]">表示範囲設定</h2>
+          <div className="border border-gray-200 rounded-md p-4 bg-gray-50">
+            <h2 className="text-gray-800 text-sm font-bold mb-4 pb-2 border-b border-gray-300">表示範囲設定</h2>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
                 <label className="flex items-center gap-2 text-black text-sm cursor-pointer">
@@ -347,7 +347,7 @@ export default function SettingsPage() {
 
               {settings.enableViewRestriction && (
                 <div className="pl-6 mt-4 space-y-3">
-                  <label className="flex items-center gap-2 text-black text-sm cursor-pointer">
+                  <label className="flex items-center gap-2 text-gray-700 text-sm cursor-pointer">
                     <input
                       type="checkbox"
                       checked={settings.builderOnlyReusable}
@@ -356,7 +356,7 @@ export default function SettingsPage() {
                     />
                     <span>ビルダーには流用可能図面のみ表示</span>
                   </label>
-                  <label className="flex items-center gap-2 text-black text-sm cursor-pointer">
+                  <label className="flex items-center gap-2 text-gray-700 text-sm cursor-pointer">
                     <input
                       type="checkbox"
                       checked={settings.internalFullAccess}
@@ -377,13 +377,13 @@ export default function SettingsPage() {
           <div className="flex justify-end gap-4 pt-4">
             <button
               onClick={handleSave}
-              className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-8 py-2 bg-[#c0c0c0] text-black text-sm font-bold active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]"
+              className="px-8 py-2 bg-[#6487AF] text-white text-sm font-bold rounded-md hover:bg-[#5476a0] active:bg-[#4465a0] transition-colors shadow-sm"
             >
               保存
             </button>
             <button
               onClick={handleCancel}
-              className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-6 py-2 bg-[#c0c0c0] text-black text-sm active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff]"
+              className="px-6 py-2 bg-white border border-gray-300 text-gray-700 text-sm rounded-md hover:bg-gray-50 active:bg-gray-100 transition-colors"
             >
               キャンセル
             </button>

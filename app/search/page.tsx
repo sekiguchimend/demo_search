@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Search } from 'lucide-react';
 
 // デフォルトの検索項目（todo.mdに基づく）
 const defaultSearchFields = [
@@ -133,18 +133,18 @@ export default function SearchPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#c0c0c0] p-4 font-sans">
-      <div className="mx-auto max-w-7xl bg-[#c0c0c0] border-2 border-white border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080]">
+    <div className="min-h-screen bg-[#e8e8e8] p-4 font-sans">
+      <div className="mx-auto max-w-7xl bg-[#fff] rounded-lg shadow-lg">
         {/* タイトルバー */}
-        <div className="bg-gradient-to-r from-[#0a246a] to-[#a6caf0] px-2 py-1 flex items-center justify-between">
+        <div className="bg-[#6487AF] px-4 py-3 flex items-center justify-between rounded-t-lg">
           <div className="flex items-center gap-2 text-white font-bold text-sm">
             <Link href="/" className="hover:bg-white/20 p-1 rounded transition-colors">
               <ArrowLeft className="w-4 h-4" />
             </Link>
-            <span className="text-base">🔍</span>
+            <Search className="w-4 h-4" />
             <span>検索</span>
           </div>
-          <div className="bg-[#c0c0c0] px-3 py-0.5 text-xs text-black border border-white border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080]">
+          <div className="bg-white/90 px-3 py-1 text-xs text-[#6487AF] font-semibold rounded">
             検索画面
           </div>
         </div>
@@ -152,11 +152,11 @@ export default function SearchPage() {
         {/* メインコンテンツ */}
         <div className="p-4 space-y-4">
           {/* 検索条件 */}
-          <div className="border-2 border-[#808080] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] p-3 bg-[#c0c0c0]">
+          <div className="p-4">
             <div className="flex items-center justify-between mb-3">
-              <div className="text-sm font-bold text-black">検索条件</div>
+              <div className="text-sm font-bold text-gray-800">検索条件</div>
               <Link href="/settings">
-                <button className="text-xs text-blue-700 hover:underline">
+                <button className="text-xs text-[#6487AF] hover:underline font-semibold">
                   検索項目を編集
                 </button>
               </Link>
@@ -167,12 +167,12 @@ export default function SearchPage() {
                 .filter(field => field.enabled)
                 .map((field) => (
                   <div key={field.id} className="flex items-center gap-2">
-                    <label className="text-sm text-black whitespace-nowrap">{field.name}:</label>
+                    <label className="text-sm text-gray-700 whitespace-nowrap">{field.name}:</label>
                     <input
                       type="text"
                       value={searchParams[field.name] || ''}
                       onChange={(e) => setSearchParams({ ...searchParams, [field.name]: e.target.value })}
-                      className="flex-1 border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-2 py-1 bg-white text-sm text-black"
+                      className="flex-1 border border-gray-300 rounded px-2 py-1 bg-white text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
                     />
                   </div>
                 ))}
@@ -182,7 +182,7 @@ export default function SearchPage() {
             <div className="mt-4 flex justify-center">
               <button
                 onClick={handleSearch}
-                className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-8 py-2 bg-[#c0c0c0] text-sm text-black font-bold active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff] hover:bg-[#d0d0d0]"
+                className="px-8 py-2 bg-[#6487AF] text-white text-sm font-bold rounded-md hover:bg-[#5476a0] active:bg-[#4465a0] transition-colors shadow-sm"
               >
                 検索
               </button>
@@ -190,25 +190,25 @@ export default function SearchPage() {
           </div>
 
           {/* 検索結果テーブル */}
-          <div className="border-2 border-[#808080] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] p-3 bg-[#c0c0c0]">
-            <div className="text-sm font-bold text-black mb-3">検索結果（{results.length}件）</div>
-            <div className="overflow-auto max-h-96 bg-white border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff]">
+          <div className="p-4">
+            <div className="text-sm font-bold text-gray-800 mb-3">検索結果（{results.length}件）</div>
+            <div className="overflow-auto max-h-96 bg-white border border-gray-200 rounded">
               <table className="w-full text-xs">
-                <thead className="bg-[#c0c0c0] sticky top-0">
+                <thead className="bg-[#6487AF] sticky top-0">
                   <tr>
-                    <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">図番</th>
-                    <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">図面種類</th>
-                    <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">製品名</th>
-                    <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">機種</th>
-                    <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">大きさ</th>
-                    <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">製品仕様</th>
-                    <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">作成年月日</th>
-                    <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">製図者</th>
-                    <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">営業所</th>
-                    <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">見積番号</th>
-                    <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">受注番号</th>
-                    <th className="border border-[#808080] px-2 py-1 text-left text-black font-normal">特別仕様</th>
-                    <th className="border border-[#808080] px-2 py-1 text-center text-black font-normal">プレビュー</th>
+                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">図番</th>
+                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">図面種類</th>
+                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">製品名</th>
+                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">機種</th>
+                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">大きさ</th>
+                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">製品仕様</th>
+                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">作成年月日</th>
+                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">製図者</th>
+                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">営業所</th>
+                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">見積番号</th>
+                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">受注番号</th>
+                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">特別仕様</th>
+                    <th className="border border-gray-300 px-2 py-2 text-center text-white font-semibold">プレビュー</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -216,28 +216,28 @@ export default function SearchPage() {
                     <tr
                       key={index}
                       className={`${
-                        selectedRow === index ? 'bg-[#0a246a] text-white' : 'hover:bg-gray-100 text-black'
+                        selectedRow === index ? 'bg-[#6487AF] text-white' : 'hover:bg-gray-50 text-gray-900'
                       }`}
                     >
-                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.図番}</td>
-                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.図面種類}</td>
-                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.製品名}</td>
-                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.機種}</td>
-                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.大きさ}</td>
-                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.製品仕様}</td>
-                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.作成年月日}</td>
-                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.製図者}</td>
-                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.営業所}</td>
-                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.見積番号}</td>
-                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.受注番号}</td>
-                      <td className="border border-[#808080] px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.特別仕様}</td>
-                      <td className="border border-[#808080] px-2 py-1 text-center">
+                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.図番}</td>
+                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.図面種類}</td>
+                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.製品名}</td>
+                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.機種}</td>
+                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.大きさ}</td>
+                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.製品仕様}</td>
+                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.作成年月日}</td>
+                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.製図者}</td>
+                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.営業所}</td>
+                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.見積番号}</td>
+                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.受注番号}</td>
+                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.特別仕様}</td>
+                      <td className="border border-gray-200 px-2 py-1 text-center">
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
                             handlePreview(row.pdfFile);
                           }}
-                          className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-3 py-0.5 bg-[#c0c0c0] text-xs text-black active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff] hover:bg-[#d0d0d0]"
+                          className="px-3 py-1 bg-[#6487AF] text-white text-xs rounded hover:bg-[#5476a0] active:bg-[#4465a0] transition-colors"
                         >
                           プレビュー
                         </button>
@@ -250,12 +250,12 @@ export default function SearchPage() {
           </div>
 
           {/* フッター（3.png参照） */}
-          <div className="border-2 border-[#808080] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] p-3 bg-[#c0c0c0]">
+          <div className="border border-gray-200 rounded-md p-4 bg-gray-50">
             <div className="space-y-3">
               {/* 選択された図面情報（1行表示） */}
-              <div className="border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff] px-3 py-2 bg-white">
+              <div className="border border-gray-300 rounded px-3 py-2 bg-white">
                 {selectedRow !== null && results[selectedRow] ? (
-                  <div className="flex gap-4 text-xs text-black overflow-x-auto">
+                  <div className="flex gap-4 text-xs text-gray-900 overflow-x-auto">
                     <span>{results[selectedRow].図番}</span>
                     <span>{results[selectedRow].機種} {results[selectedRow].大きさ}</span>
                     <span>{results[selectedRow].見積番号}</span>
@@ -276,44 +276,44 @@ export default function SearchPage() {
               <div className="flex gap-2 justify-between">
                 <div className="flex gap-2">
                   <button
-                    className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-4 py-1.5 bg-[#c0c0c0] text-xs text-black active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff] hover:bg-[#d0d0d0]"
+                    className="px-4 py-1.5 bg-[#6487AF] text-white text-xs rounded hover:bg-[#5476a0] active:bg-[#4465a0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={selectedRow === null}
                   >
                     物件検索
                   </button>
                   <button
-                    className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-4 py-1.5 bg-[#c0c0c0] text-xs text-black active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff] hover:bg-[#d0d0d0]"
+                    className="px-4 py-1.5 bg-[#6487AF] text-white text-xs rounded hover:bg-[#5476a0] active:bg-[#4465a0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={selectedRow === null}
                   >
                     積算検索
                   </button>
                   <button
-                    className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-4 py-1.5 bg-[#c0c0c0] text-xs text-black active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff] hover:bg-[#d0d0d0]"
+                    className="px-4 py-1.5 bg-[#6487AF] text-white text-xs rounded hover:bg-[#5476a0] active:bg-[#4465a0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={selectedRow === null}
                   >
                     展開登録
                   </button>
                   <button
-                    className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-4 py-1.5 bg-[#c0c0c0] text-xs text-black active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff] hover:bg-[#d0d0d0]"
+                    className="px-4 py-1.5 bg-[#6487AF] text-white text-xs rounded hover:bg-[#5476a0] active:bg-[#4465a0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={selectedRow === null}
                   >
                     図面削除
                   </button>
                   <button
-                    className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-4 py-1.5 bg-[#c0c0c0] text-xs text-black active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff] hover:bg-[#d0d0d0]"
+                    className="px-4 py-1.5 bg-[#6487AF] text-white text-xs rounded hover:bg-[#5476a0] active:bg-[#4465a0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={selectedRow === null}
                   >
                     図面出力
                   </button>
                   <button
                     onClick={handleExportCSV}
-                    className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-4 py-1.5 bg-[#c0c0c0] text-xs text-black active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff] hover:bg-[#d0d0d0]"
+                    className="px-4 py-1.5 bg-[#6487AF] text-white text-xs rounded hover:bg-[#5476a0] active:bg-[#4465a0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={results.length === 0}
                   >
                     CSV出力
                   </button>
                   <button
-                    className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-4 py-1.5 bg-[#c0c0c0] text-xs text-black active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff] hover:bg-[#d0d0d0]"
+                    className="px-4 py-1.5 bg-[#6487AF] text-white text-xs rounded hover:bg-[#5476a0] active:bg-[#4465a0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={selectedRow === null}
                   >
                     詳細選択
@@ -321,13 +321,13 @@ export default function SearchPage() {
                 </div>
                 <div className="flex gap-2">
                   <button
-                    className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-6 py-1.5 bg-[#c0c0c0] text-xs text-black active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff] hover:bg-[#d0d0d0]"
+                    className="px-6 py-1.5 bg-[#6487AF] text-white text-xs rounded hover:bg-[#5476a0] active:bg-[#4465a0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={selectedRow === null}
                   >
                     起動
                   </button>
                   <button
-                    className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-4 py-1.5 bg-[#c0c0c0] text-xs text-black active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff] hover:bg-[#d0d0d0]"
+                    className="px-4 py-1.5 bg-white border border-gray-300 text-gray-700 text-xs rounded hover:bg-gray-50 active:bg-gray-100 transition-colors"
                   >
                     キャンセル
                   </button>
@@ -345,39 +345,39 @@ export default function SearchPage() {
           onClick={handleCloseModal}
         >
           <div
-            className="bg-[#c0c0c0] border-2 border-white border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] w-full max-w-6xl max-h-[90vh] flex flex-col"
+            className="bg-white rounded-lg shadow-xl w-full max-w-6xl max-h-[90vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* モーダルタイトルバー */}
-            <div className="bg-gradient-to-r from-[#0a246a] to-[#a6caf0] px-2 py-1 flex items-center justify-between">
+            <div className="bg-[#6487AF] px-4 py-3 flex items-center justify-between rounded-t-lg">
               <div className="flex items-center gap-2 text-white font-bold text-sm">
                 <span className="text-base">📄</span>
                 <span>PDFプレビュー</span>
               </div>
               <button
                 onClick={handleCloseModal}
-                className="text-white hover:bg-white/20 px-2 py-0.5 rounded text-lg font-bold"
+                className="text-white hover:bg-white/20 px-2 py-1 rounded text-lg font-bold"
               >
                 ×
               </button>
             </div>
 
             {/* PDFビューアー */}
-            <div className="flex-1 p-4 overflow-auto bg-[#c0c0c0]">
-              <div className="h-full border-2 border-[#808080] border-t-[#000000] border-l-[#000000] border-b-[#ffffff] border-r-[#ffffff]">
+            <div className="flex-1 p-4 overflow-auto bg-gray-50">
+              <div className="h-full border border-gray-200 rounded">
                 <iframe
                   src={currentPdfFile}
-                  className="w-full h-full min-h-[70vh]"
+                  className="w-full h-full min-h-[70vh] rounded"
                   title="PDF Preview"
                 />
               </div>
             </div>
 
             {/* モーダルフッター */}
-            <div className="border-t-2 border-[#808080] p-3 flex justify-center">
+            <div className="border-t border-gray-200 p-4 flex justify-center rounded-b-lg">
               <button
                 onClick={handleCloseModal}
-                className="border-2 border-[#ffffff] border-t-[#ffffff] border-l-[#ffffff] border-b-[#808080] border-r-[#808080] px-6 py-1.5 bg-[#c0c0c0] text-xs text-black active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#ffffff] active:border-r-[#ffffff] hover:bg-[#d0d0d0]"
+                className="px-6 py-2 bg-[#6487AF] text-white text-sm font-semibold rounded-md hover:bg-[#5476a0] active:bg-[#4465a0] transition-colors"
               >
                 閉じる
               </button>
