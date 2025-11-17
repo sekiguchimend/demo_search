@@ -67,7 +67,7 @@ export default function SearchPage() {
   }, []);
 
   const [results, setResults] = useState(sampleData);
-  const [selectedRow, setSelectedRow] = useState<number | null>(0);
+  const [selectedRow, setSelectedRow] = useState<number | null>(null);
 
   const handleSearch = () => {
     // 検索パラメータに基づいてフィルタリング
@@ -85,7 +85,7 @@ export default function SearchPage() {
       return true;
     });
     setResults(filtered);
-    setSelectedRow(filtered.length > 0 ? 0 : null);
+    setSelectedRow(null);
   };
 
   const handleExportCSV = () => {
@@ -194,7 +194,7 @@ export default function SearchPage() {
             <div className="text-sm font-bold text-gray-800 mb-3">検索結果（{results.length}件）</div>
             <div className="overflow-auto max-h-96 bg-white border border-gray-200 rounded">
               <table className="w-full text-xs">
-                <thead className="bg-[#6487AF] sticky top-0">
+                <thead className="bg-[#6487AF] sticky top-0 z-10">
                   <tr>
                     <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">図番</th>
                     <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">図面種類</th>
@@ -208,7 +208,7 @@ export default function SearchPage() {
                     <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">見積番号</th>
                     <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">受注番号</th>
                     <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">特別仕様</th>
-                    <th className="border border-gray-300 px-2 py-2 text-center text-white font-semibold">プレビュー</th>
+                    <th className="border border-gray-300 px-2 py-2 text-center text-white font-semibold">サムネイル</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -232,15 +232,22 @@ export default function SearchPage() {
                       <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.受注番号}</td>
                       <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.特別仕様}</td>
                       <td className="border border-gray-200 px-2 py-1 text-center">
-                        <button
+                        <div
                           onClick={(e) => {
                             e.stopPropagation();
                             handlePreview(row.pdfFile);
                           }}
-                          className="px-3 py-1 bg-[#6487AF] text-white text-xs rounded hover:bg-[#5476a0] active:bg-[#4465a0] transition-colors"
+                          className="cursor-pointer inline-block"
                         >
-                          プレビュー
-                        </button>
+                          <div className="w-16 h-12 border border-gray-300 rounded overflow-hidden hover:ring-2 hover:ring-[#6487AF] transition-all shadow-sm">
+                            <iframe
+                              src={row.pdfFile}
+                              className="w-full h-full pointer-events-none scale-50 origin-top-left"
+                              style={{ width: '200%', height: '200%' }}
+                              title={`Thumbnail ${index}`}
+                            />
+                          </div>
+                        </div>
                       </td>
                     </tr>
                   ))}
