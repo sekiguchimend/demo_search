@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Search } from 'lucide-react';
+import { ArrowLeft, Search, Grid, List, Eye } from 'lucide-react';
 
 // デフォルトの検索項目（todo.mdに基づく）
 const defaultSearchFields = [
@@ -68,6 +68,7 @@ export default function SearchPage() {
 
   const [results, setResults] = useState(sampleData);
   const [selectedRow, setSelectedRow] = useState<number | null>(null);
+  const [viewMode, setViewMode] = useState<'table' | 'card'>('table');
 
   const handleSearch = () => {
     // 検索パラメータに基づいてフィルタリング
@@ -191,69 +192,197 @@ export default function SearchPage() {
 
           {/* 検索結果テーブル */}
           <div className="p-4">
-            <div className="text-sm font-bold text-gray-800 mb-3">検索結果（{results.length}件）</div>
-            <div className="overflow-auto max-h-96 bg-white border border-gray-200 rounded">
-              <table className="w-full text-xs">
-                <thead className="bg-[#6487AF] sticky top-0 z-10">
-                  <tr>
-                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">図番</th>
-                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">図面種類</th>
-                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">製品名</th>
-                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">機種</th>
-                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">大きさ</th>
-                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">製品仕様</th>
-                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">作成年月日</th>
-                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">製図者</th>
-                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">営業所</th>
-                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">見積番号</th>
-                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">受注番号</th>
-                    <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">特別仕様</th>
-                    <th className="border border-gray-300 px-2 py-2 text-center text-white font-semibold">サムネイル</th>
-                  </tr>
-                </thead>
-                <tbody>
+            <div className="flex items-center justify-between mb-3">
+              <div className="text-sm font-bold text-gray-800">検索結果（{results.length}件）</div>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setViewMode('table')}
+                  className={`px-3 py-1.5 text-xs rounded transition-colors flex items-center gap-1 ${
+                    viewMode === 'table'
+                      ? 'bg-[#323232] text-white'
+                      : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'
+                  }`}
+                >
+                  <List className="w-4 h-4" />
+                  <span>テーブル表示</span>
+                </button>
+                <button
+                  onClick={() => setViewMode('card')}
+                  className={`px-3 py-1.5 text-xs rounded transition-colors flex items-center gap-1 ${
+                    viewMode === 'card'
+                      ? 'bg-[#323232] text-white'
+                      : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'
+                  }`}
+                >
+                  <Grid className="w-4 h-4" />
+                  <span>カード表示</span>
+                </button>
+              </div>
+            </div>
+
+            {viewMode === 'table' ? (
+              <div className="overflow-auto max-h-96 bg-white border border-gray-200 rounded">
+                <table className="w-full text-xs">
+                  <thead className="bg-[#6487AF] sticky top-0 z-10">
+                    <tr>
+                      <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">図番</th>
+                      <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">図面種類</th>
+                      <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">製品名</th>
+                      <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">機種</th>
+                      <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">大きさ</th>
+                      <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">製品仕様</th>
+                      <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">作成年月日</th>
+                      <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">製図者</th>
+                      <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">営業所</th>
+                      <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">見積番号</th>
+                      <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">受注番号</th>
+                      <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">特別仕様</th>
+                      <th className="border border-gray-300 px-2 py-2 text-center text-white font-semibold">サムネイル</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {results.map((row, index) => (
+                      <tr
+                        key={index}
+                        className={`${
+                          selectedRow === index ? 'bg-[#6487AF] text-white' : 'hover:bg-gray-50 text-gray-900'
+                        }`}
+                      >
+                        <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.図番}</td>
+                        <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.図面種類}</td>
+                        <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.製品名}</td>
+                        <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.機種}</td>
+                        <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.大きさ}</td>
+                        <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.製品仕様}</td>
+                        <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.作成年月日}</td>
+                        <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.製図者}</td>
+                        <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.営業所}</td>
+                        <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.見積番号}</td>
+                        <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.受注番号}</td>
+                        <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.特別仕様}</td>
+                        <td className="border border-gray-200 px-2 py-1 text-center">
+                          <div
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handlePreview(row.pdfFile);
+                            }}
+                            className="cursor-pointer inline-block"
+                          >
+                            <div className="w-16 h-12 border border-gray-300 rounded overflow-hidden hover:ring-2 hover:ring-[#6487AF] transition-all shadow-sm">
+                              <iframe
+                                src={row.pdfFile}
+                                className="w-full h-full pointer-events-none scale-50 origin-top-left"
+                                style={{ width: '200%', height: '200%' }}
+                                title={`Thumbnail ${index}`}
+                              />
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <div className="overflow-auto max-h-96 bg-white border border-gray-200 rounded p-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                   {results.map((row, index) => (
-                    <tr
+                    <div
                       key={index}
-                      className={`${
-                        selectedRow === index ? 'bg-[#6487AF] text-white' : 'hover:bg-gray-50 text-gray-900'
+                      onClick={() => setSelectedRow(index)}
+                      className={`border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer ${
+                        selectedRow === index ? 'ring-2 ring-[#323232]' : 'border-gray-200'
                       }`}
                     >
-                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.図番}</td>
-                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.図面種類}</td>
-                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.製品名}</td>
-                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.機種}</td>
-                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.大きさ}</td>
-                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.製品仕様}</td>
-                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.作成年月日}</td>
-                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.製図者}</td>
-                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.営業所}</td>
-                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.見積番号}</td>
-                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.受注番号}</td>
-                      <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.特別仕様}</td>
-                      <td className="border border-gray-200 px-2 py-1 text-center">
+                      {/* サムネイル */}
+                      <div className="relative bg-gray-100 h-48">
                         <div
                           onClick={(e) => {
                             e.stopPropagation();
                             handlePreview(row.pdfFile);
                           }}
-                          className="cursor-pointer inline-block"
+                          className="w-full h-full"
                         >
-                          <div className="w-16 h-12 border border-gray-300 rounded overflow-hidden hover:ring-2 hover:ring-[#6487AF] transition-all shadow-sm">
-                            <iframe
-                              src={row.pdfFile}
-                              className="w-full h-full pointer-events-none scale-50 origin-top-left"
-                              style={{ width: '200%', height: '200%' }}
-                              title={`Thumbnail ${index}`}
-                            />
+                          <iframe
+                            src={row.pdfFile}
+                            className="w-full h-full pointer-events-none"
+                            title={`Thumbnail ${index}`}
+                          />
+                          <div className="absolute top-2 right-2 bg-white/90 p-1.5 rounded-full shadow-md hover:bg-white transition-colors">
+                            <Eye className="w-4 h-4 text-gray-700" />
                           </div>
                         </div>
-                      </td>
-                    </tr>
+                      </div>
+
+                      {/* カード情報 */}
+                      <div className="p-3 bg-white space-y-2">
+                        {/* タグ */}
+                        <div className="flex flex-wrap gap-1.5">
+                          <span className="px-2 py-0.5 bg-pink-100 text-pink-600 text-xs rounded font-medium">
+                            #{row.図面種類}
+                          </span>
+                          <span className="px-2 py-0.5 bg-blue-100 text-blue-600 text-xs rounded font-medium">
+                            #{row.機種}
+                          </span>
+                          {row.特別仕様 && (
+                            <span className="px-2 py-0.5 bg-purple-100 text-purple-600 text-xs rounded font-medium">
+                              #{row.特別仕様}
+                            </span>
+                          )}
+                          <span className="px-2 py-0.5 bg-green-600 text-white text-xs rounded font-medium">
+                            {row.営業所}
+                          </span>
+                        </div>
+
+                        {/* タイトル */}
+                        <h3 className="text-sm font-bold text-gray-900 line-clamp-2">
+                          {row.製品名} - {row.図番}
+                        </h3>
+
+                        {/* 詳細情報 */}
+                        <div className="space-y-1 text-xs text-gray-600">
+                          <div className="flex justify-between">
+                            <span className="text-gray-500">機種:</span>
+                            <span className="font-bold text-gray-900">{row.機種} {row.大きさ}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-500">製品仕様:</span>
+                            <span className="font-bold text-gray-900">{row.製品仕様}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-500">製図者:</span>
+                            <span className="font-bold text-gray-900">{row.製図者}</span>
+                          </div>
+                          {row.見積番号 && (
+                            <div className="flex justify-between">
+                              <span className="text-gray-500">見積番号:</span>
+                              <span className="font-bold text-gray-900">{row.見積番号}</span>
+                            </div>
+                          )}
+                          {row.受注番号 && (
+                            <div className="flex justify-between">
+                              <span className="text-gray-500">受注番号:</span>
+                              <span className="font-bold text-gray-900">{row.受注番号}</span>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* 更新日 */}
+                        <div className="flex items-center justify-between pt-2 border-t border-gray-100">
+                          <span className="text-xs text-gray-500">
+                            作成: {row.作成年月日}
+                          </span>
+                          <div className="flex items-center gap-1 text-gray-500">
+                            <Eye className="w-3.5 h-3.5" />
+                            <span className="text-xs">0</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   ))}
-                </tbody>
-              </table>
-            </div>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* フッター（3.png参照） */}
