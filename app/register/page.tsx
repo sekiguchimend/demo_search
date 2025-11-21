@@ -40,16 +40,16 @@ export default function RegisterPage() {
     hostTransfer: true,
     transferStatus: '未転送',
     // 仕様フォーム
-    spec開口切詰左: '',
-    spec開口切詰右: '',
-    spec開口切詰中: '',
+    spec間口切詰左: '',
+    spec間口切詰右: '',
+    spec間口切詰中: '',
     spec前柱中追加: '',
-    specカスケード張り: '',
+    specカスケード無し: '',
     spec屋根の出寸法変更: '',
-    spec屋根軒軒材変更: '',
-    spec屋根妻面持出: '',
-    spec妻開きラーメン構造: '',
-    spec妻主シャッター下地: '',
+    spec屋根断熱材変更: '',
+    spec屋根表面特出: '',
+    spec妻間放ラーメン構造: '',
+    spec特注シャッター下地: '',
     spec軒高切詰: '',
     spec前入隅左: '',
     spec前入隅右: '',
@@ -60,12 +60,12 @@ export default function RegisterPage() {
     spec前出隅右: '',
     spec後出隅左: '',
     spec後出隅右: '',
-    spec既存開口高変更: '',
+    spec胴縁間隔変更: '',
     spec長期地耐力: '',
     spec水下シャッター下地: '',
     spec間仕切: '',
     spec前壁: '',
-    specコンクリート床: '',
+    specこけら工事: '',
     specその他: '',
   });
 
@@ -496,10 +496,10 @@ export default function RegisterPage() {
               {/* 左列 */}
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">開口切詰 左:</label>
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">間口切詰 左:</label>
                   <select
-                    value={formData.spec開口切詰左}
-                    onChange={(e) => setFormData({ ...formData, spec開口切詰左: e.target.value })}
+                    value={formData.spec間口切詰左}
+                    onChange={(e) => setFormData({ ...formData, spec間口切詰左: e.target.value })}
                     className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
                   >
                     <option value=""></option>
@@ -507,10 +507,10 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">開口切詰 右:</label>
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">間口切詰 右:</label>
                   <select
-                    value={formData.spec開口切詰右}
-                    onChange={(e) => setFormData({ ...formData, spec開口切詰右: e.target.value })}
+                    value={formData.spec間口切詰右}
+                    onChange={(e) => setFormData({ ...formData, spec間口切詰右: e.target.value })}
                     className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
                   >
                     <option value=""></option>
@@ -518,10 +518,10 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">開口切詰 中:</label>
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">間口切詰 中:</label>
                   <select
-                    value={formData.spec開口切詰中}
-                    onChange={(e) => setFormData({ ...formData, spec開口切詰中: e.target.value })}
+                    value={formData.spec間口切詰中}
+                    onChange={(e) => setFormData({ ...formData, spec間口切詰中: e.target.value })}
                     className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
                   >
                     <option value=""></option>
@@ -540,10 +540,10 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">カスケード張り:</label>
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">カスケード無し:</label>
                   <select
-                    value={formData.specカスケード張り}
-                    onChange={(e) => setFormData({ ...formData, specカスケード張り: e.target.value })}
+                    value={formData.specカスケード無し}
+                    onChange={(e) => setFormData({ ...formData, specカスケード無し: e.target.value })}
                     className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
                   >
                     <option value=""></option>
@@ -562,10 +562,10 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">屋根軒軒材変更:</label>
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">屋根断熱材変更:</label>
                   <select
-                    value={formData.spec屋根軒軒材変更}
-                    onChange={(e) => setFormData({ ...formData, spec屋根軒軒材変更: e.target.value })}
+                    value={formData.spec屋根断熱材変更}
+                    onChange={(e) => setFormData({ ...formData, spec屋根断熱材変更: e.target.value })}
                     className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
                   >
                     <option value=""></option>
@@ -573,10 +573,10 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">屋根妻面持出:</label>
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">屋根表面特出:</label>
                   <select
-                    value={formData.spec屋根妻面持出}
-                    onChange={(e) => setFormData({ ...formData, spec屋根妻面持出: e.target.value })}
+                    value={formData.spec屋根表面特出}
+                    onChange={(e) => setFormData({ ...formData, spec屋根表面特出: e.target.value })}
                     className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
                   >
                     <option value=""></option>
@@ -584,10 +584,10 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">妻開きラーメン構造:</label>
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">妻間放ラーメン構造:</label>
                   <select
-                    value={formData.spec妻開きラーメン構造}
-                    onChange={(e) => setFormData({ ...formData, spec妻開きラーメン構造: e.target.value })}
+                    value={formData.spec妻間放ラーメン構造}
+                    onChange={(e) => setFormData({ ...formData, spec妻間放ラーメン構造: e.target.value })}
                     className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
                   >
                     <option value=""></option>
@@ -595,10 +595,10 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">妻主シャッター下地:</label>
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">特注シャッター下地:</label>
                   <select
-                    value={formData.spec妻主シャッター下地}
-                    onChange={(e) => setFormData({ ...formData, spec妻主シャッター下地: e.target.value })}
+                    value={formData.spec特注シャッター下地}
+                    onChange={(e) => setFormData({ ...formData, spec特注シャッター下地: e.target.value })}
                     className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
                   >
                     <option value=""></option>
@@ -722,10 +722,10 @@ export default function RegisterPage() {
               {/* 右列 */}
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <label className="text-gray-700 text-sm whitespace-nowrap w-36 flex-shrink-0">既存開口高変更:</label>
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-36 flex-shrink-0">胴縁間隔変更:</label>
                   <select
-                    value={formData.spec既存開口高変更}
-                    onChange={(e) => setFormData({ ...formData, spec既存開口高変更: e.target.value })}
+                    value={formData.spec胴縁間隔変更}
+                    onChange={(e) => setFormData({ ...formData, spec胴縁間隔変更: e.target.value })}
                     className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
                   >
                     <option value=""></option>
@@ -777,10 +777,10 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <label className="text-gray-700 text-sm whitespace-nowrap w-36 flex-shrink-0">コンクリート床:</label>
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-36 flex-shrink-0">こけら工事:</label>
                   <select
-                    value={formData.specコンクリート床}
-                    onChange={(e) => setFormData({ ...formData, specコンクリート床: e.target.value })}
+                    value={formData.specこけら工事}
+                    onChange={(e) => setFormData({ ...formData, specこけら工事: e.target.value })}
                     className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
                   >
                     <option value=""></option>
