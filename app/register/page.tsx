@@ -1,13 +1,16 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowLeft, Upload, X } from 'lucide-react';
 
 export default function RegisterPage() {
   const [isMaterialOpen, setIsMaterialOpen] = useState(false);
   const [isHostTransferOpen, setIsHostTransferOpen] = useState(false);
   const [isSpecSectionOpen, setIsSpecSectionOpen] = useState(true);
+  const [uploadedImages, setUploadedImages] = useState<{ file: File; preview: string }[]>([]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [formData, setFormData] = useState({
     drawingNumber: 'HBFTA59253',
     drawingType: 'F:確認図面',
@@ -84,6 +87,29 @@ export default function RegisterPage() {
 
   const handleSpecChange = () => {
     console.log('仕様変更 clicked');
+  };
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files) {
+      const newImages = Array.from(files).map((file) => ({
+        file,
+        preview: URL.createObjectURL(file),
+      }));
+      setUploadedImages((prev) => [...prev, ...newImages]);
+    }
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
+  const handleRemoveImage = (index: number) => {
+    setUploadedImages((prev) => {
+      const newImages = [...prev];
+      URL.revokeObjectURL(newImages[index].preview);
+      newImages.splice(index, 1);
+      return newImages;
+    });
   };
 
   return (
@@ -798,6 +824,56 @@ export default function RegisterPage() {
                   </select>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* 画像アップロードセクション */}
+          <div className="border-t-2 border-gray-300 pt-6 mt-6">
+            <h2 className="text-lg font-bold text-gray-800 mb-4">画像アップロード</h2>
+
+            <div className="space-y-4">
+              {/* アップロードエリア */}
+              <div
+                onClick={() => fileInputRef.current?.click()}
+                className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-[#6487AF] hover:bg-gray-50 transition-colors"
+              >
+                <Upload className="w-12 h-12 mx-auto text-gray-400 mb-2" />
+                <p className="text-gray-600 text-sm">クリックして画像を選択</p>
+                <p className="text-gray-400 text-xs mt-1">PNG, JPG, GIF形式に対応</p>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  onChange={handleImageUpload}
+                  className="hidden"
+                />
+              </div>
+
+              {/* アップロードされた画像のプレビュー */}
+              {uploadedImages.length > 0 && (
+                <div className="grid grid-cols-4 gap-4">
+                  {uploadedImages.map((image, index) => (
+                    <div key={index} className="relative group">
+                      <div className="aspect-square relative rounded-lg overflow-hidden border border-gray-200">
+                        <Image
+                          src={image.preview}
+                          alt={`アップロード画像 ${index + 1}`}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <button
+                        onClick={() => handleRemoveImage(index)}
+                        className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                      <p className="text-xs text-gray-500 mt-1 truncate">{image.file.name}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 
