@@ -2,13 +2,12 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 
 export default function RegisterPage() {
-  const router = useRouter();
   const [isMaterialOpen, setIsMaterialOpen] = useState(false);
   const [isHostTransferOpen, setIsHostTransferOpen] = useState(false);
+  const [isSpecSectionOpen, setIsSpecSectionOpen] = useState(true);
   const [formData, setFormData] = useState({
     drawingNumber: 'HBFTA59253',
     drawingType: 'F:確認図面',
@@ -40,11 +39,39 @@ export default function RegisterPage() {
     orderNo: '',
     hostTransfer: true,
     transferStatus: '未転送',
+    // 仕様フォーム
+    spec開口切詰左: '',
+    spec開口切詰右: '',
+    spec開口切詰中: '',
+    spec前柱中追加: '',
+    specカスケード張り: '',
+    spec屋根の出寸法変更: '',
+    spec屋根軒軒材変更: '',
+    spec屋根妻面持出: '',
+    spec妻開きラーメン構造: '',
+    spec妻主シャッター下地: '',
+    spec軒高切詰: '',
+    spec前入隅左: '',
+    spec前入隅右: '',
+    spec後入隅左: '',
+    spec後入隅右: '',
+    spec積雪補強仕様: '',
+    spec前出隅左: '',
+    spec前出隅右: '',
+    spec後出隅左: '',
+    spec後出隅右: '',
+    spec既存開口高変更: '',
+    spec長期地耐力: '',
+    spec水下シャッター下地: '',
+    spec間仕切: '',
+    spec前壁: '',
+    specコンクリート床: '',
+    specその他: '',
   });
 
   const handleSubmit = () => {
     console.log('OK clicked:', formData);
-    router.push('/register2');
+    // 保存処理などをここに実装
   };
 
   const handleSpecSubmit = () => {
@@ -53,6 +80,10 @@ export default function RegisterPage() {
 
   const handleCancel = () => {
     console.log('Cancel clicked');
+  };
+
+  const handleSpecChange = () => {
+    console.log('仕様変更 clicked');
   };
 
   return (
@@ -448,8 +479,330 @@ export default function RegisterPage() {
             図番と図面種類は必ず入力してください。
           </div>
 
+          {/* 仕様セクション（register2の内容） */}
+          <div className="border-t-2 border-gray-300 pt-6 mt-6">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-lg font-bold text-gray-800">仕様</h2>
+              <button
+                onClick={handleSpecChange}
+                className="px-6 py-1 bg-[#6487AF] text-white text-sm rounded hover:bg-[#5476a0] active:bg-[#4465a0] transition-colors"
+              >
+                仕様変更
+              </button>
+            </div>
+
+            {/* 3列グリッドフォーム */}
+            <div className="grid grid-cols-3 gap-x-6 gap-y-3">
+              {/* 左列 */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">開口切詰 左:</label>
+                  <select
+                    value={formData.spec開口切詰左}
+                    onChange={(e) => setFormData({ ...formData, spec開口切詰左: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">開口切詰 右:</label>
+                  <select
+                    value={formData.spec開口切詰右}
+                    onChange={(e) => setFormData({ ...formData, spec開口切詰右: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">開口切詰 中:</label>
+                  <select
+                    value={formData.spec開口切詰中}
+                    onChange={(e) => setFormData({ ...formData, spec開口切詰中: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">前柱中追加:</label>
+                  <select
+                    value={formData.spec前柱中追加}
+                    onChange={(e) => setFormData({ ...formData, spec前柱中追加: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">カスケード張り:</label>
+                  <select
+                    value={formData.specカスケード張り}
+                    onChange={(e) => setFormData({ ...formData, specカスケード張り: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">屋根の出寸法変更:</label>
+                  <select
+                    value={formData.spec屋根の出寸法変更}
+                    onChange={(e) => setFormData({ ...formData, spec屋根の出寸法変更: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">屋根軒軒材変更:</label>
+                  <select
+                    value={formData.spec屋根軒軒材変更}
+                    onChange={(e) => setFormData({ ...formData, spec屋根軒軒材変更: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">屋根妻面持出:</label>
+                  <select
+                    value={formData.spec屋根妻面持出}
+                    onChange={(e) => setFormData({ ...formData, spec屋根妻面持出: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">妻開きラーメン構造:</label>
+                  <select
+                    value={formData.spec妻開きラーメン構造}
+                    onChange={(e) => setFormData({ ...formData, spec妻開きラーメン構造: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">妻主シャッター下地:</label>
+                  <select
+                    value={formData.spec妻主シャッター下地}
+                    onChange={(e) => setFormData({ ...formData, spec妻主シャッター下地: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+              </div>
+
+              {/* 中央列 */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-32 flex-shrink-0">軒高切詰:</label>
+                  <select
+                    value={formData.spec軒高切詰}
+                    onChange={(e) => setFormData({ ...formData, spec軒高切詰: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-32 flex-shrink-0">前入隅 左:</label>
+                  <select
+                    value={formData.spec前入隅左}
+                    onChange={(e) => setFormData({ ...formData, spec前入隅左: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-32 flex-shrink-0">前入隅 右:</label>
+                  <select
+                    value={formData.spec前入隅右}
+                    onChange={(e) => setFormData({ ...formData, spec前入隅右: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-32 flex-shrink-0">後入隅 左:</label>
+                  <select
+                    value={formData.spec後入隅左}
+                    onChange={(e) => setFormData({ ...formData, spec後入隅左: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-32 flex-shrink-0">後入隅 右:</label>
+                  <select
+                    value={formData.spec後入隅右}
+                    onChange={(e) => setFormData({ ...formData, spec後入隅右: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-32 flex-shrink-0">積雪補強仕様:</label>
+                  <select
+                    value={formData.spec積雪補強仕様}
+                    onChange={(e) => setFormData({ ...formData, spec積雪補強仕様: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-32 flex-shrink-0">前出隅 左:</label>
+                  <select
+                    value={formData.spec前出隅左}
+                    onChange={(e) => setFormData({ ...formData, spec前出隅左: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-32 flex-shrink-0">前出隅 右:</label>
+                  <select
+                    value={formData.spec前出隅右}
+                    onChange={(e) => setFormData({ ...formData, spec前出隅右: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-32 flex-shrink-0">後出隅 左:</label>
+                  <select
+                    value={formData.spec後出隅左}
+                    onChange={(e) => setFormData({ ...formData, spec後出隅左: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-32 flex-shrink-0">後出隅 右:</label>
+                  <select
+                    value={formData.spec後出隅右}
+                    onChange={(e) => setFormData({ ...formData, spec後出隅右: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+              </div>
+
+              {/* 右列 */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-36 flex-shrink-0">既存開口高変更:</label>
+                  <select
+                    value={formData.spec既存開口高変更}
+                    onChange={(e) => setFormData({ ...formData, spec既存開口高変更: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-36 flex-shrink-0">長期地耐力:</label>
+                  <select
+                    value={formData.spec長期地耐力}
+                    onChange={(e) => setFormData({ ...formData, spec長期地耐力: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-36 flex-shrink-0">水下シャッター下地:</label>
+                  <select
+                    value={formData.spec水下シャッター下地}
+                    onChange={(e) => setFormData({ ...formData, spec水下シャッター下地: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-36 flex-shrink-0">間仕切:</label>
+                  <select
+                    value={formData.spec間仕切}
+                    onChange={(e) => setFormData({ ...formData, spec間仕切: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-36 flex-shrink-0">前壁:</label>
+                  <select
+                    value={formData.spec前壁}
+                    onChange={(e) => setFormData({ ...formData, spec前壁: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-36 flex-shrink-0">コンクリート床:</label>
+                  <select
+                    value={formData.specコンクリート床}
+                    onChange={(e) => setFormData({ ...formData, specコンクリート床: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-36 flex-shrink-0">その他:</label>
+                  <select
+                    value={formData.specその他}
+                    onChange={(e) => setFormData({ ...formData, specその他: e.target.value })}
+                    className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* ボタン */}
-          <div className="flex justify-end gap-4">
+          <div className="flex justify-end gap-4 mt-6">
             <button
               onClick={handleSubmit}
               className="px-8 py-2 bg-[#6487AF] text-white text-sm font-bold rounded-md hover:bg-[#5476a0] active:bg-[#4465a0] transition-colors shadow-sm"
