@@ -17,7 +17,7 @@ const defaultSearchFields = [
   { id: '9', name: '営業所', enabled: true },
   { id: '10', name: '見積番号', enabled: true },
   { id: '11', name: '受注番号', enabled: true },
-  { id: '12', name: '特別仕様', enabled: true },
+  { id: '12', name: '特注仕様', enabled: true },
 ];
 
 // ダミーデータ（todo.mdの項目に基づいて拡張）
@@ -33,7 +33,7 @@ const sampleData = Array.from({ length: 30 }, (_, i) => ({
   営業所: ['郡山営業所', '広島営業所', '東京営業所'][i % 3],
   見積番号: i % 3 === 0 ? '' : `000${188018 + i}`,
   受注番号: i % 2 === 0 ? '' : `KK${20250000 + i}`,
-  特別仕様: i % 4 === 0 ? '' : ['間口切詰', '間仕切', '前壁', 'その他'][i % 4],
+  特注仕様: i % 4 === 0 ? '' : ['間口切詰', '間仕切', '前壁', 'その他'][i % 4],
   pdfFile: ['/demo.pdf', '/demo2.pdf', '/demo3.pdf', '/demo4.pdf'][i % 4],
 }));
 
@@ -90,7 +90,7 @@ export default function SearchPage() {
   };
 
   const handleExportCSV = () => {
-    const headers = ['図番', '図面種類', '製品名', '機種', '大きさ', '製品仕様', '作成年月日', '製図者', '営業所', '見積番号', '受注番号', '特別仕様'];
+    const headers = ['図番', '図面種類', '製品名', '機種', '大きさ', '製品仕様', '作成年月日', '製図者', '営業所', '見積番号', '受注番号', '特注仕様'];
     let csvContent = '\uFEFF'; // BOM for Excel UTF-8
     csvContent += headers.join(',') + '\n';
 
@@ -107,7 +107,7 @@ export default function SearchPage() {
         row.営業所,
         row.見積番号,
         row.受注番号,
-        row.特別仕様,
+        row.特注仕様,
       ];
       csvContent += values.map(v => `"${v}"`).join(',') + '\n';
     });
@@ -236,7 +236,7 @@ export default function SearchPage() {
                       <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">営業所</th>
                       <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">見積番号</th>
                       <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">受注番号</th>
-                      <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">特別仕様</th>
+                      <th className="border border-gray-300 px-2 py-2 text-left text-white font-semibold">特注仕様</th>
                       <th className="border border-gray-300 px-2 py-2 text-center text-white font-semibold">サムネイル</th>
                     </tr>
                   </thead>
@@ -259,7 +259,7 @@ export default function SearchPage() {
                         <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.営業所}</td>
                         <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.見積番号}</td>
                         <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.受注番号}</td>
-                        <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.特別仕様}</td>
+                        <td className="border border-gray-200 px-2 py-1 cursor-pointer" onClick={() => setSelectedRow(index)}>{row.特注仕様}</td>
                         <td className="border border-gray-200 px-2 py-1 text-center">
                           <div
                             onClick={(e) => {
@@ -324,9 +324,9 @@ export default function SearchPage() {
                           <span className="px-2 py-0.5 bg-blue-100 text-blue-600 text-xs rounded font-medium">
                             #{row.機種}
                           </span>
-                          {row.特別仕様 && (
+                          {row.特注仕様 && (
                             <span className="px-2 py-0.5 bg-purple-100 text-purple-600 text-xs rounded font-medium">
-                              #{row.特別仕様}
+                              #{row.特注仕様}
                             </span>
                           )}
                           <span className="px-2 py-0.5 bg-green-600 text-white text-xs rounded font-medium">
@@ -401,7 +401,7 @@ export default function SearchPage() {
                     <span>{results[selectedRow].営業所}</span>
                     <span>{results[selectedRow].製品名}</span>
                     <span>{results[selectedRow].製品仕様}</span>
-                    <span>{results[selectedRow].特別仕様}</span>
+                    <span>{results[selectedRow].特注仕様}</span>
                   </div>
                 ) : (
                   <div className="text-xs text-gray-500">図面が選択されていません</div>

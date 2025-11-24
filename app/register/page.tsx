@@ -1,16 +1,20 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, Upload, X } from 'lucide-react';
+import { ArrowLeft, Upload, X, CheckCircle } from 'lucide-react';
 
 export default function RegisterPage() {
+  const router = useRouter();
   const [isMaterialOpen, setIsMaterialOpen] = useState(false);
   const [isHostTransferOpen, setIsHostTransferOpen] = useState(false);
   const [isSpecSectionOpen, setIsSpecSectionOpen] = useState(true);
   const [uploadedImages, setUploadedImages] = useState<{ file: File; preview: string }[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     drawingNumber: 'HBFTA59253',
     drawingType: 'F:確認図面',
@@ -50,8 +54,8 @@ export default function RegisterPage() {
     specカスケード無し: '',
     spec屋根の出寸法変更: '',
     spec屋根断熱材変更: '',
-    spec屋根表面特出: '',
-    spec妻間放ラーメン構造: '',
+    spec屋根表面持出: '',
+    spec妻開放ラーメン構造: '',
     spec特注シャッター下地: '',
     spec軒高切詰: '',
     spec前入隅左: '',
@@ -68,13 +72,19 @@ export default function RegisterPage() {
     spec水下シャッター下地: '',
     spec間仕切: '',
     spec前壁: '',
-    specこけら工事: '',
+    specこりゃエエ蔵: '',
     specその他: '',
   });
 
   const handleSubmit = () => {
     console.log('OK clicked:', formData);
     // 保存処理などをここに実装
+    setIsSuccessModalOpen(true);
+  };
+
+  const handleModalConfirm = () => {
+    setIsSuccessModalOpen(false);
+    router.push('/search');
   };
 
   const handleSpecSubmit = () => {
@@ -110,6 +120,39 @@ export default function RegisterPage() {
       newImages.splice(index, 1);
       return newImages;
     });
+  };
+
+  const handleDragEnter = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+
+    const files = e.dataTransfer.files;
+    if (files) {
+      const imageFiles = Array.from(files).filter(file => file.type.startsWith('image/'));
+      const newImages = imageFiles.map((file) => ({
+        file,
+        preview: URL.createObjectURL(file),
+      }));
+      setUploadedImages((prev) => [...prev, ...newImages]);
+    }
   };
 
   return (
@@ -599,10 +642,10 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">屋根表面特出:</label>
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">屋根表面持出:</label>
                   <select
-                    value={formData.spec屋根表面特出}
-                    onChange={(e) => setFormData({ ...formData, spec屋根表面特出: e.target.value })}
+                    value={formData.spec屋根表面持出}
+                    onChange={(e) => setFormData({ ...formData, spec屋根表面持出: e.target.value })}
                     className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
                   >
                     <option value=""></option>
@@ -610,10 +653,10 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">妻間放ラーメン構造:</label>
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-40 flex-shrink-0">妻開放ラーメン構造:</label>
                   <select
-                    value={formData.spec妻間放ラーメン構造}
-                    onChange={(e) => setFormData({ ...formData, spec妻間放ラーメン構造: e.target.value })}
+                    value={formData.spec妻開放ラーメン構造}
+                    onChange={(e) => setFormData({ ...formData, spec妻開放ラーメン構造: e.target.value })}
                     className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
                   >
                     <option value=""></option>
@@ -803,10 +846,10 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <label className="text-gray-700 text-sm whitespace-nowrap w-36 flex-shrink-0">こけら工事:</label>
+                  <label className="text-gray-700 text-sm whitespace-nowrap w-36 flex-shrink-0">こりゃエエ蔵:</label>
                   <select
-                    value={formData.specこけら工事}
-                    onChange={(e) => setFormData({ ...formData, specこけら工事: e.target.value })}
+                    value={formData.specこりゃエエ蔵}
+                    onChange={(e) => setFormData({ ...formData, specこりゃエエ蔵: e.target.value })}
                     className="flex-1 px-2 py-1 border border-gray-300 rounded bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
                   >
                     <option value=""></option>
@@ -835,10 +878,20 @@ export default function RegisterPage() {
               {/* アップロードエリア */}
               <div
                 onClick={() => fileInputRef.current?.click()}
-                className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-[#6487AF] hover:bg-gray-50 transition-colors"
+                onDragEnter={handleDragEnter}
+                onDragLeave={handleDragLeave}
+                onDragOver={handleDragOver}
+                onDrop={handleDrop}
+                className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
+                  isDragging
+                    ? 'border-[#6487AF] bg-blue-50'
+                    : 'border-gray-300 hover:border-[#6487AF] hover:bg-gray-50'
+                }`}
               >
                 <Upload className="w-12 h-12 mx-auto text-gray-400 mb-2" />
-                <p className="text-gray-600 text-sm">クリックして画像を選択</p>
+                <p className="text-gray-600 text-sm">
+                  {isDragging ? '画像をドロップしてください' : 'クリックまたはドラッグ&ドロップで画像を選択'}
+                </p>
                 <p className="text-gray-400 text-xs mt-1">PNG, JPG, GIF形式に対応</p>
                 <input
                   ref={fileInputRef}
@@ -894,6 +947,44 @@ export default function RegisterPage() {
           </div>
         </div>
       </div>
+
+      {/* 登録完了モーダル */}
+      {isSuccessModalOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+          onClick={() => setIsSuccessModalOpen(false)}
+        >
+          <div
+            className="bg-white rounded-lg shadow-xl w-full max-w-md"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* モーダルタイトルバー */}
+            <div className="bg-[#6487AF] px-4 py-3 flex items-center justify-between rounded-t-lg">
+              <div className="flex items-center gap-2 text-white font-bold text-sm">
+                <CheckCircle className="w-5 h-5" />
+                <span>登録完了</span>
+              </div>
+            </div>
+
+            {/* モーダルコンテンツ */}
+            <div className="p-6 text-center">
+              <div className="mb-4">
+                <CheckCircle className="w-16 h-16 mx-auto text-green-500" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-800 mb-2">登録が完了しました</h3>
+              <p className="text-gray-600 text-sm mb-6">
+                図面情報が正常に登録されました。
+              </p>
+              <button
+                onClick={handleModalConfirm}
+                className="w-full px-6 py-2 bg-[#6487AF] text-white text-sm font-semibold rounded-md hover:bg-[#5476a0] active:bg-[#4465a0] transition-colors"
+              >
+                検索画面へ
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
