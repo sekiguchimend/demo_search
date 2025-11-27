@@ -111,10 +111,12 @@ export default function SearchPage() {
       for (const [key, value] of Object.entries(searchParams)) {
         if (value && value.trim() !== '') {
           const rowValue = String(row[key as keyof typeof row] || '');
-          if (key in row && rowValue) {
-            if (!rowValue.toLowerCase().includes(value.toLowerCase())) {
-              return false;
-            }
+          // 検索条件が入力されている場合、そのフィールドが空白のデータは除外
+          if (!rowValue || rowValue.trim() === '') {
+            return false;
+          }
+          if (!rowValue.toLowerCase().includes(value.toLowerCase())) {
+            return false;
           }
         }
       }
