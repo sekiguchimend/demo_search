@@ -199,38 +199,6 @@ export default function RegisterPage() {
             </div>
           </div>
 
-          {/* 第2行: 通知No、部品No、廃図対象外 */}
-          <div className="grid grid-cols-3 gap-4">
-            <div className="flex items-center gap-2">
-              <label className="text-gray-700 text-sm whitespace-nowrap">通知No:</label>
-              <input
-                type="text"
-                value={formData.notificationNo}
-                onChange={(e) => setFormData({ ...formData, notificationNo: e.target.value })}
-                className="flex-1 border border-gray-300 rounded px-2 py-1 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
-              />
-            </div>
-            <div className="flex items-center gap-2">
-              <label className="text-gray-700 text-sm whitespace-nowrap">部品No:</label>
-              <input
-                type="text"
-                value={formData.productNo}
-                onChange={(e) => setFormData({ ...formData, productNo: e.target.value })}
-                className="flex-1 border border-gray-300 rounded px-2 py-1 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
-              />
-            </div>
-            <div className="flex items-center gap-2">
-              <label className="flex items-center gap-1 text-gray-700 text-sm border border-gray-300 rounded px-3 py-2 bg-gray-50">
-                <input
-                  type="checkbox"
-                  checked={formData.obsolete}
-                  onChange={(e) => setFormData({ ...formData, obsolete: e.target.checked })}
-                  className="w-4 h-4"
-                />
-                <span>廃図対象外</span>
-              </label>
-            </div>
-          </div>
 
           {/* 第3行: 製品名称 */}
           <div className="flex items-center gap-2">
@@ -245,39 +213,6 @@ export default function RegisterPage() {
             </select>
           </div>
 
-          {/* 第4行: 部品名称、部品仕様、部品特性 */}
-          <div className="grid grid-cols-3 gap-4">
-            <div className="flex items-center gap-2">
-              <label className="text-gray-700 text-sm whitespace-nowrap">部品名称:</label>
-              <select
-                value={formData.partName}
-                onChange={(e) => setFormData({ ...formData, partName: e.target.value })}
-                className="flex-1 border border-gray-300 rounded px-2 py-1 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
-              >
-                <option value=""></option>
-              </select>
-            </div>
-            <div className="flex items-center gap-2">
-              <label className="text-gray-700 text-sm whitespace-nowrap">部品仕様:</label>
-              <select
-                value={formData.partSpec}
-                onChange={(e) => setFormData({ ...formData, partSpec: e.target.value })}
-                className="flex-1 border border-gray-300 rounded px-2 py-1 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
-              >
-                <option value=""></option>
-              </select>
-            </div>
-            <div className="flex items-center gap-2">
-              <label className="text-gray-700 text-sm whitespace-nowrap">部品特性:</label>
-              <select
-                value={formData.partProperty}
-                onChange={(e) => setFormData({ ...formData, partProperty: e.target.value })}
-                className="flex-1 border border-gray-300 rounded px-2 py-1 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
-              >
-                <option value=""></option>
-              </select>
-            </div>
-          </div>
 
           {/* 第5行: 機種、大きさ、壁仕様 */}
           <div className="grid grid-cols-3 gap-4">
@@ -316,8 +251,8 @@ export default function RegisterPage() {
             </div>
           </div>
 
-          {/* 第6行: 尺度、作成年月日、仕上げ */}
-          <div className="grid grid-cols-3 gap-4">
+          {/* 第6行: 尺度、作成年月日 */}
+          <div className="grid grid-cols-2 gap-4">
             <div className="flex items-center gap-2">
               <label className="text-gray-700 text-sm whitespace-nowrap">尺度:</label>
               <div className="flex items-center gap-1">
@@ -345,201 +280,51 @@ export default function RegisterPage() {
                 className="flex-1 border border-gray-300 rounded px-2 py-1 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
               />
             </div>
-            <div className="flex items-center gap-2">
-              <label className="text-gray-700 text-sm whitespace-nowrap">仕上げ:</label>
-              <select
-                value={formData.finish}
-                onChange={(e) => setFormData({ ...formData, finish: e.target.value })}
-                className="flex-1 border border-gray-300 rounded px-2 py-1 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
-              >
-                <option value=""></option>
-              </select>
-            </div>
           </div>
 
-          {/* 第7行: 製図者、検図者、承認者 */}
+          {/* 第7行: 製図者 */}
+          <div className="flex items-center gap-2">
+            <label className="text-gray-700 text-sm whitespace-nowrap">製図者:</label>
+            <select
+              value={formData.drafter}
+              onChange={(e) => setFormData({ ...formData, drafter: e.target.value })}
+              className="w-64 border border-gray-300 rounded px-2 py-1 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
+            >
+              <option>田中花子</option>
+              <option>山田太郎</option>
+            </select>
+          </div>
+
+          {/* 営業所、見積番号、受注番号 */}
           <div className="grid grid-cols-3 gap-4">
             <div className="flex items-center gap-2">
-              <label className="text-gray-700 text-sm whitespace-nowrap">製図者:</label>
+              <label className="text-gray-700 text-sm whitespace-nowrap">営業所:</label>
               <select
-                value={formData.drafter}
-                onChange={(e) => setFormData({ ...formData, drafter: e.target.value })}
+                value={formData.office}
+                onChange={(e) => setFormData({ ...formData, office: e.target.value })}
                 className="flex-1 border border-gray-300 rounded px-2 py-1 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
               >
-                <option>田中花子</option>
-                <option>山田太郎</option>
+                <option>相模原営業所</option>
+                <option>東京営業所</option>
               </select>
             </div>
             <div className="flex items-center gap-2">
-              <label className="text-gray-700 text-sm whitespace-nowrap">検図者:</label>
-              <select
-                value={formData.reviewer}
-                onChange={(e) => setFormData({ ...formData, reviewer: e.target.value })}
+              <label className="text-gray-700 text-sm whitespace-nowrap">見積番号:</label>
+              <input
+                type="text"
+                value={formData.estimateNo}
+                onChange={(e) => setFormData({ ...formData, estimateNo: e.target.value })}
                 className="flex-1 border border-gray-300 rounded px-2 py-1 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
-              >
-                <option value=""></option>
-              </select>
+              />
             </div>
             <div className="flex items-center gap-2">
-              <label className="text-gray-700 text-sm whitespace-nowrap">承認者:</label>
-              <select
-                value={formData.approver}
-                onChange={(e) => setFormData({ ...formData, approver: e.target.value })}
+              <label className="text-gray-700 text-sm whitespace-nowrap">受注番号:</label>
+              <input
+                type="text"
+                value={formData.orderNo}
+                onChange={(e) => setFormData({ ...formData, orderNo: e.target.value })}
                 className="flex-1 border border-gray-300 rounded px-2 py-1 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
-              >
-                <option value=""></option>
-              </select>
-            </div>
-          </div>
-
-          {/* 2カラムレイアウト */}
-          <div className="grid grid-cols-2 gap-4 items-start">
-            {/* 左側: 材料/材質 */}
-            <div className="border border-gray-200 rounded-md bg-gray-50 overflow-hidden">
-              <button
-                onClick={() => setIsMaterialOpen(!isMaterialOpen)}
-                className="w-full text-left p-3 hover:bg-gray-100 active:bg-gray-200 transition-colors duration-200"
-              >
-                <h3 className="text-gray-800 text-sm font-bold">材料/材質 {isMaterialOpen ? '▼' : '▶'}</h3>
-              </button>
-              <div
-                className={`transition-all duration-200 ease-in-out ${
-                  isMaterialOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                }`}
-              >
-                <div className="px-3 pb-3 space-y-2">
-                  <div className="flex items-center gap-2">
-                    <label className="text-gray-700 text-sm whitespace-nowrap">名称:</label>
-                    <select
-                      value={formData.materialName}
-                      onChange={(e) => setFormData({ ...formData, materialName: e.target.value })}
-                      className="flex-1 border border-gray-300 rounded px-2 py-1 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
-                    >
-                      <option value=""></option>
-                    </select>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <label className="text-gray-700 text-sm whitespace-nowrap">サイズ:</label>
-                    <select
-                      value={formData.materialSize}
-                      onChange={(e) => setFormData({ ...formData, materialSize: e.target.value })}
-                      className="flex-1 border border-gray-300 rounded px-2 py-1 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
-                    >
-                      <option value=""></option>
-                    </select>
-                  </div>
-                  <div className="grid grid-cols-3 gap-2">
-                    <div className="flex items-center gap-1">
-                      <label className="text-gray-700 text-sm whitespace-nowrap">板厚1:</label>
-                      <input
-                        type="text"
-                        value={formData.thickness1}
-                        onChange={(e) => setFormData({ ...formData, thickness1: e.target.value })}
-                        className="w-16 border border-gray-300 rounded px-2 py-1 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
-                      />
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <label className="text-gray-700 text-sm whitespace-nowrap">板厚2:</label>
-                      <input
-                        type="text"
-                        value={formData.thickness2}
-                        onChange={(e) => setFormData({ ...formData, thickness2: e.target.value })}
-                        className="w-16 border border-gray-300 rounded px-2 py-1 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
-                      />
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <label className="text-gray-700 text-sm whitespace-nowrap">長さ:</label>
-                      <input
-                        type="text"
-                        value={formData.length}
-                        onChange={(e) => setFormData({ ...formData, length: e.target.value })}
-                        className="w-16 border border-gray-300 rounded px-2 py-1 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
-                      />
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <label className="text-gray-700 text-sm whitespace-nowrap">材質:</label>
-                    <select
-                      value={formData.material}
-                      onChange={(e) => setFormData({ ...formData, material: e.target.value })}
-                      className="flex-1 border border-gray-300 rounded px-2 py-1 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
-                    >
-                      <option value=""></option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* 右側: 営業所、見積番号、受注番号、ホスト転送 */}
-            <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <label className="text-gray-700 text-sm whitespace-nowrap">営業所:</label>
-                <select
-                  value={formData.office}
-                  onChange={(e) => setFormData({ ...formData, office: e.target.value })}
-                  className="flex-1 border border-gray-300 rounded px-2 py-1 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
-                >
-                  <option>相模原営業所</option>
-                  <option>東京営業所</option>
-                </select>
-              </div>
-              <div className="flex items-center gap-2">
-                <label className="text-gray-700 text-sm whitespace-nowrap">見積番号:</label>
-                <input
-                  type="text"
-                  value={formData.estimateNo}
-                  onChange={(e) => setFormData({ ...formData, estimateNo: e.target.value })}
-                  className="flex-1 border border-gray-300 rounded px-2 py-1 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
-                />
-              </div>
-              <div className="flex items-center gap-2">
-                <label className="text-gray-700 text-sm whitespace-nowrap">受注番号:</label>
-                <input
-                  type="text"
-                  value={formData.orderNo}
-                  onChange={(e) => setFormData({ ...formData, orderNo: e.target.value })}
-                  className="flex-1 border border-gray-300 rounded px-2 py-1 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#6487AF] focus:border-transparent"
-                />
-              </div>
-
-              {/* ホスト転送セクション */}
-              <div className="border border-gray-200 rounded-md bg-gray-50 overflow-hidden">
-                <button
-                  onClick={() => setIsHostTransferOpen(!isHostTransferOpen)}
-                  className="w-full text-left p-3 hover:bg-gray-100 active:bg-gray-200 transition-colors duration-200"
-                >
-                  <h3 className="text-gray-800 text-sm font-bold">ホスト転送 {isHostTransferOpen ? '▼' : '▶'}</h3>
-                </button>
-                <div
-                  className={`transition-all duration-200 ease-in-out ${
-                    isHostTransferOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                  }`}
-                >
-                  <div className="px-3 pb-3">
-                    <div className="flex items-center justify-between">
-                      <label className="flex items-center gap-1 text-gray-700 text-sm">
-                        <input
-                          type="checkbox"
-                          checked={formData.hostTransfer}
-                          onChange={(e) => setFormData({ ...formData, hostTransfer: e.target.checked })}
-                          className="w-4 h-4"
-                        />
-                        <span>する</span>
-                      </label>
-                      <div className="text-black text-sm">
-                        状態: <span className="font-bold text-black">{formData.transferStatus}</span>
-                      </div>
-                      <button
-                        onClick={handleSpecSubmit}
-                        className="px-4 py-1 bg-[#6487AF] text-white text-sm rounded hover:bg-[#5476a0] active:bg-[#4465a0] transition-colors"
-                      >
-                        仕様登録
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              />
             </div>
           </div>
 
